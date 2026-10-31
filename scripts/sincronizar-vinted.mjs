@@ -12,7 +12,7 @@ const PERFIL = 'https://www.vinted.es/member/' + ID;
 const BASE = 'https://www.vinted.es';
 const ARCHIVO = new URL('../data/productos.json', import.meta.url);
 const DIAS_VENDIDAS = 45;          /* una prenda vendida se sigue viendo este tiempo */
-const MAX_DESCRIPCIONES = +(process.env.JCV_MAX_DESCRIPCIONES || 12);      /* descripciones nuevas que se leen por ejecucion */
+const MAX_DESCRIPCIONES = +(process.env.JCV_MAX_DESCRIPCIONES || 5);      /* descripciones nuevas que se leen por ejecucion */
 const ESPERA_MS = 2000;            /* pausa entre lecturas de ficha, para no agobiar a Vinted */
 const SECO = process.argv.includes('--dry-run');
 
