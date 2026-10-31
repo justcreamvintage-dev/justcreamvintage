@@ -1,0 +1,40 @@
+name: Sincronizar con Vinted
+
+on:
+  schedule:
+    - cron: '23 */3 * * *'   # cada 3 horas (hora UTC)
+  workflow_dispatch:          # y a mano desde la pestaña Actions
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sincronizar-vinted
+  cancel-in-progress: false
+
+jobs:
+  sincronizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Leer el armario de Vinted
+        run: node scripts/sincronizar-vinted.mjs
+
+      - name: Publicar los cambios
+        run: |
+          if [ -n "$(git status --porcelain data/productos.json)" ]; then
+            git config user.name  'Sincronización JCV'
+            git config user.email 'actions@users.noreply.github.com'
+            git add data/productos.json
+            git commit -m 'Sincronizar con Vinted'
+            git push
+            echo 'Publicado'
+          else
+            echo 'Sin cambios: no se publica nada'
+          fi
