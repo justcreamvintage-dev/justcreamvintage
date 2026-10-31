@@ -12,12 +12,14 @@ Web estática (HTML, CSS y JavaScript, sin compilar), alojada en GitHub Pages co
 
 ## Sincronización automática
 
-No hay que hacer nada: `.github/workflows/sincronizar.yml` lee el armario de Vinted **cada 3 horas** y actualiza `data/productos.json` solo si algo ha cambiado. Cuando lo actualiza, GitHub Pages republica la web en uno o dos minutos.
+No hay que hacer nada: `.github/workflows/sincronizar.yml` lee el armario de Vinted **cada 10 minutos** y actualiza `data/productos.json` solo si algo ha cambiado. Cuando lo actualiza, GitHub Pages republica la web en uno o dos minutos.
+
+GitHub no garantiza la puntualidad de las tareas programadas: cuando sus servidores van cargados, una ejecución puede salir con retraso o saltarse. En la práctica eso significa que un cambio en Vinted suele estar en la web en 10-15 minutos, y en un mal momento puede irse a media hora.
 
 - Lee el armario público (`/api/v2/wardrobe/3190974402/items`) con una sesión anónima, sin necesidad de tu usuario ni tu contraseña.
-- Las descripciones se leen de la ficha pública de cada prenda y se guardan, así que cada prenda se lee una sola vez. Por ir despacio con Vinted, trae como máximo 12 descripciones nuevas por ejecución: si subes 30 prendas de golpe, todas aparecen al momento y las descripciones se completan en las siguientes horas.
+- Las descripciones se leen de la ficha pública de cada prenda y se guardan, así que cada prenda se lee una sola vez. Por ir despacio con Vinted, trae como máximo 5 descripciones nuevas por ejecución: si subes 30 prendas de golpe, todas aparecen al momento y las descripciones se completan en la hora siguiente.
 - Lo que estaba en la web y ya no aparece en Vinted se marca como vendido.
-- Si el armario viene vacío o Vinted responde mal, la ejecución falla y **no toca la web**: se queda como estaba y lo reintenta a las 3 horas.
+- Si el armario viene vacío o Vinted responde mal, la ejecución falla y **no toca la web**: se queda como estaba y lo reintenta en la siguiente vuelta.
 
 Para lanzarla a mano: pestaña **Actions**, "Sincronizar con Vinted", **Run workflow**.
 
