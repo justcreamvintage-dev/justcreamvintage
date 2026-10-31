@@ -55,7 +55,7 @@ function curl(url, { json = true, intentos = 4 } = {}) {
       const codigo = corte === -1 ? 0 : parseInt(salida.slice(corte + 9), 10);
       const cuerpo = corte === -1 ? salida : salida.slice(0, corte);
       if ((codigo === 429 || codigo >= 500 || codigo === 403) && intentos > 1) {
-        await dormir(15000 * (4 - intentos));
+        await dormir(15000 * Math.max(1, 5 - intentos));
         return curl(url, { json, intentos: intentos - 1 }).then(resolve, reject);
       }
       resolve({ codigo, cuerpo });
