@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Sincronizar con Vinted</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Graduate&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+  <link rel="stylesheet" href="css/estilo.css">
+  <style>
+    .panel { max-width: 820px; margin-inline: auto; padding-left: var(--hueco); padding-right: var(--hueco-d); padding-block: 48px 80px; display: grid; gap: 2.4rem; }
+    .panel__cabeza { display: flex; align-items: center; gap: 1rem; }
+    .panel__cabeza svg { width: 72px; height: 72px; flex: none; }
+    .panel h1 { font-family: var(--f-varsity); font-size: clamp(1.8rem, 4vw, 2.6rem); }
+    .panel h1 + p { color: var(--tenue); }
+    .bloque { display: grid; gap: 1rem; padding: 1.6rem; border: 2px solid var(--tinta); border-radius: 14px; background: var(--papel); box-shadow: 5px 5px 0 var(--tinta); }
+    .bloque h2 { font-family: var(--f-varsity); font-size: 1.35rem; display: flex; gap: .8rem; align-items: center; }
+    .bloque h2 span { width: 2.2rem; height: 2.2rem; flex: none; border-radius: 50%; background: var(--granate); color: var(--crema); display: grid; place-items: center; font-size: 1rem; }
+    .bloque p, .bloque li { color: var(--tenue); }
+    .bloque ol { margin: 0; padding-left: 1.2rem; display: grid; gap: .4rem; }
+    .marcador { justify-self: start; cursor: grab; }
+    .resumen { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: .8rem; }
+    .resumen div { padding: .9rem 1rem; border-radius: 10px; background: var(--crema); border: 1.5px dashed rgb(107 16 21 / .35); }
+    .resumen b { display: block; font-family: var(--f-varsity); font-size: 1.8rem; color: var(--granate); font-weight: 400; font-variant-numeric: tabular-nums; }
+    .cambios { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; max-height: 340px; overflow: auto; }
+    .cambios li { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: .8rem; align-items: center; font-size: .95rem; color: var(--tinta); }
+    .cambios img { width: 44px; height: 55px; object-fit: cover; border-radius: 6px; background: var(--crema-2); }
+    .cambios em { font-style: normal; font-size: .8rem; padding: .15rem .6rem; border-radius: 999px; background: var(--crema-2); color: var(--granate); white-space: nowrap; }
+    .cambios em.v { background: var(--rojo); color: var(--crema); }
+    .campos { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .9rem; }
+    .campo { display: grid; gap: .3rem; font-size: .9rem; color: var(--tinta); }
+    .campo input, textarea { font: inherit; font-size: 1rem; padding: .6rem .8rem; border: 2px solid var(--granate); border-radius: 8px; background: #fff; color: var(--tinta); min-width: 0; }
+    textarea { width: 100%; min-height: 110px; font-size: .85rem; }
+    .acciones { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+    .mensaje { padding: .9rem 1.1rem; border-radius: 10px; font-size: .98rem; }
+    .mensaje--ok { background: #e3efd9; color: #24461a; border: 2px solid #4a7a35; }
+    .mensaje--error { background: #f8dcd8; color: #6b1015; border: 2px solid var(--rojo); }
+    .mensaje--info { background: var(--crema); color: var(--tinta); border: 2px dashed var(--granate); }
+    details summary { cursor: pointer; color: var(--granate); }
+    .pequeno { font-size: .85rem; }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="logo" viewBox="-160 -160 320 320">
+      <circle r="156" fill="#f1e6cf"/><circle r="146" fill="none" stroke="#6b1015" stroke-width="4"/><circle r="138" fill="#6b1015"/><circle r="129" fill="none" stroke="#f1e6cf" stroke-width="2.4"/>
+      <g fill="#f1e6cf" font-family="Yellowtail, cursive" transform="rotate(-8)"><text x="-30" y="-38" font-size="66" text-anchor="middle">Just</text><text x="0" y="26" font-size="92" text-anchor="middle">Cream</text><path d="M-96,46 C-36,36 36,26 104,8 C56,32 -8,46 -88,56 Z"/><text x="22" y="98" font-size="50" text-anchor="middle">Vintage</text></g>
+    </symbol>
+  </svg>
+
+  <main class="panel">
+    <div class="panel__cabeza">
+      <svg viewBox="-160 -160 320 320" aria-hidden="true"><use href="#logo" x="-160" y="-160" width="320" height="320"/></svg>
+      <div>
+        <h1>Sincronizar con Vinted</h1>
+        <p>Cada vez que subas o vendas algo en Vinted, pulsa el botón y la web se pone al día sola.</p>
+      </div>
+    </div>
+
+    <section class="bloque" id="paso-recibido" hidden aria-live="polite">
+      <h2><span>✓</span>Datos recibidos de Vinted</h2>
+      <div class="resumen" id="resumen"></div>
+      <ul class="cambios" id="cambios"></ul>
+      <div class="acciones">
+        <button class="boton" type="button" id="publicar"><span>Publicar en la web</span></button>
+        <button class="boton boton--crema" type="button" id="descargar"><span>Descargar productos.json</span></button>
+      </div>
+      <div id="resultado" role="status"></div>
+    </section>
+
+    <section class="bloque">
+      <h2><span>1</span>Instala el botón (solo la primera vez)</h2>
+      <p>Arrastra este botón a la barra de marcadores de tu navegador (en el ordenador). Si no ves la barra, púlsala con Ctrl + Mayús + B (o Cmd + Mayús + B en Mac).</p>
+      <a class="boton marcador" id="marcador" href="#"><span>Sincronizar JCV</span></a>
+    </section>
+
+    <section class="bloque">
+      <h2><span>2</span>Cuando subas o vendas algo</h2>
+      <ol>
+        <li>Abre <a href="https://www.vinted.es/" target="_blank" rel="noopener">vinted.es</a> con tu sesión iniciada.</li>
+        <li>Pulsa el marcador "Sincronizar JCV". Leerá todas tus prendas en unos segundos.</li>
+        <li>Pulsa "Publicar en la web" en el cuadro que aparece. Te traerá de vuelta a esta página.</li>
+        <li>Revisa el resumen y confirma con "Publicar en la web". En uno o dos minutos la web muestra lo nuevo y marca lo vendido.</li>
+      </ol>
+    </section>
+
+    <section class="bloque">
+      <h2><span>3</span>Conexión con la web</h2>
+      <p>La web vive en GitHub. Para publicar hace falta un token de GitHub con permiso de escritura solo sobre este repositorio. Se guarda únicamente en este navegador.</p>
+      <div class="campos">
+        <label class="campo">Usuario de GitHub<input id="gh-usuario" type="text" autocomplete="off" spellcheck="false"></label>
+        <label class="campo">Repositorio<input id="gh-repo" type="text" autocomplete="off" spellcheck="false"></label>
+        <label class="campo">Rama<input id="gh-rama" type="text" autocomplete="off" spellcheck="false"></label>
+        <label class="campo">Token<input id="gh-token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…"></label>
+      </div>
+      <div class="acciones">
+        <button class="boton boton--crema" type="button" id="guardar-cfg"><span>Guardar conexión</span></button>
+        <button class="ficha__guardar" type="button" id="borrar-cfg">Borrar token de este navegador</button>
+      </div>
+      <details>
+        <summary>Cómo crear el token</summary>
+        <ol class="pequeno">
+          <li>Entra en github.com, Settings, Developer settings, Personal access tokens, Fine-grained tokens, Generate new token.</li>
+          <li>En "Repository access" elige "Only select repositories" y marca el repositorio de la web.</li>
+          <li>En "Permissions", "Contents": Read and write. Nada más.</li>
+          <li>Copia el token y pégalo aquí arriba.</li>
+        </ol>
+      </details>
+    </section>
+
+    <details class="bloque">
+      <summary>¿El marcador no abre esta página? Pega aquí los datos</summary>
+      <p class="pequeno">Si tu navegador bloquea la ventana, en el cuadro de Vinted pulsa "Copiar datos" y pégalos aquí.</p>
+      <textarea id="pegado" aria-label="Datos copiados desde Vinted"></textarea>
+      <button class="boton boton--crema" type="button" id="usar-pegado"><span>Usar estos datos</span></button>
+    </details>
+
+    <p class="pequeno"><a href="./">Volver a la web</a></p>
+  </main>
+
+  <script src="js/categorias.js"></script>
+  <script src="js/sincronizar.js"></script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Just Cream Vintage</title>
+  <meta name="description" content="Ropa vintage y de segunda mano elegida a mano y revisada prenda a prenda. Encuentra tu match y cómpralo con la protección de Vinted.">
+  <meta name="theme-color" content="#1f0809">
+  <meta property="og:title" content="Just Cream Vintage">
+  <meta property="og:description" content="Segunda mano de primera. Ropa vintage elegida a mano.">
+  <meta property="og:url" content="https://justcreamvintage.es/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://justcreamvintage.es/">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Graduate&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <svg class="grano" aria-hidden="true"><filter id="ruido"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .12  0 0 0 0 .03  0 0 0 0 .03  0 0 0 .6 0"/></filter><rect width="100%" height="100%" filter="url(#ruido)"/></svg>
+
+  <div class="cursor" aria-hidden="true"><div class="cursor__gota"></div><span class="cursor__texto"></span></div>
+
+  <!-- Piezas reutilizables -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <filter id="tinta" x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="2" seed="7" result="r"/>
+        <feDisplacementMap in="SourceGraphic" in2="r" scale="3" xChannelSelector="R" yChannelSelector="G" result="m"/>
+        <feColorMatrix in="r" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2 1.8" result="h"/>
+        <feComposite in="m" in2="h" operator="in"/>
+      </filter>
+      <filter id="onda" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence id="onda-ruido" type="fractalNoise" baseFrequency=".012 .02" numOctaves="2" seed="3" result="r"/>
+        <feDisplacementMap id="onda-mapa" in="SourceGraphic" in2="r" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <path id="chispa" d="M0,-50 C4,-14 14,-4 50,0 C14,4 4,14 0,50 C-4,14 -14,4 -50,0 C-14,-4 -4,-14 0,-50 Z"/>
+    </defs>
+    <!-- Logo: version vectorial del sello de la marca -->
+    <symbol id="logo" viewBox="-160 -160 320 320">
+      <circle r="156" fill="#f1e6cf"/>
+      <circle r="146" fill="none" stroke="#6b1015" stroke-width="4"/>
+      <circle r="138" fill="#6b1015"/>
+      <circle r="129" fill="none" stroke="#f1e6cf" stroke-width="2.4"/>
+      <g fill="#f1e6cf" font-family="Yellowtail, 'Brush Script MT', cursive" transform="rotate(-8)">
+        <text x="-30" y="-38" font-size="66" text-anchor="middle">Just</text>
+        <text x="0" y="26" font-size="92" text-anchor="middle">Cream</text>
+        <path d="M-96,46 C-36,36 36,26 104,8 C56,32 -8,46 -88,56 Z"/>
+        <text x="22" y="98" font-size="50" text-anchor="middle">Vintage</text>
+      </g>
+      <use href="#chispa" transform="translate(66 -74) scale(.3)" fill="#f1e6cf"/>
+    </symbol>
+    <symbol id="borde-roto" viewBox="0 0 1200 30" preserveAspectRatio="none">
+      <path d="M0,30 L0,14 L38,9 L71,16 L120,8 L168,15 L214,6 L260,13 L301,9 L355,17 L402,8 L447,14 L498,5 L540,12 L596,9 L642,17 L690,7 L733,13 L781,8 L829,16 L870,6 L921,12 L968,9 L1012,16 L1060,7 L1104,14 L1150,8 L1200,12 L1200,30 Z"/>
+    </symbol>
+  </svg>
+
+  <header class="cabecera" id="arriba">
+    <a class="marca" href="#arriba" aria-label="Just Cream Vintage, inicio">
+      <svg viewBox="-160 -160 320 320" aria-hidden="true"><use href="#logo" x="-160" y="-160" width="320" height="320"/></svg>
+    </a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#coleccion">Colección</a>
+      <a href="#match">Tu match</a>
+      <a class="menu__vinted" href="https://www.vinted.es/member/3190974402" target="_blank" rel="noopener" data-cursor="Vinted">Vinted</a>
+    </nav>
+    <svg class="cabecera__borde" aria-hidden="true"><use href="#borde-roto"/></svg>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="titulo">
+      <canvas class="hero__lienzo" aria-hidden="true"></canvas>
+      <div class="hero__centro">
+        <div class="hero__sello" data-cursor="Hola">
+          <div class="sello" role="img" aria-label="Logo de Just Cream Vintage">
+            <svg class="sello__capa sello__capa--roja" viewBox="-160 -160 320 320" aria-hidden="true"><circle r="156"/></svg>
+            <svg class="sello__capa sello__capa--crema" viewBox="-160 -160 320 320" aria-hidden="true"><circle r="154" fill="none" stroke-width="5"/></svg>
+            <svg class="sello__logo" viewBox="-160 -160 320 320" aria-hidden="true"><use href="#logo" x="-160" y="-160" width="320" height="320"/></svg>
+            <div class="sello__brillo" aria-hidden="true"></div>
+          </div>
+          <svg class="chispa chispa--1" viewBox="-60 -60 120 120" aria-hidden="true"><use href="#chispa"/></svg>
+          <svg class="chispa chispa--2" viewBox="-60 -60 120 120" aria-hidden="true"><use href="#chispa"/></svg>
+          <svg class="chispa chispa--3" viewBox="-60 -60 120 120" aria-hidden="true"><use href="#chispa"/></svg>
+        </div>
+        <h1 class="hero__titulo" id="titulo">
+          <span class="linea" data-prof="14"><span class="linea__in">Segunda mano</span></span>
+          <span class="linea linea--script" data-prof="28"><span class="linea__in">de primera</span></span>
+        </h1>
+        <p class="hero__lema">Ropa vintage elegida a mano y revisada prenda a prenda. Encuentra la tuya y cómprala con la protección de Vinted.</p>
+        <div class="hero__botones">
+          <a class="boton magnetico" href="#coleccion" data-cursor="Ver"><span>Ver la colección</span></a>
+          <a class="boton boton--crema magnetico" href="#match" data-cursor="Desliza"><span>Encuentra tu match</span></a>
+        </div>
+      </div>
+      <svg class="hero__borde" aria-hidden="true"><use href="#borde-roto"/></svg>
+    </section>
+
+    <!-- CINTA tipo banderin -->
+    <div class="cinta" aria-hidden="true">
+      <div class="cinta__pista">
+        <span>Piezas únicas</span><svg viewBox="-60 -60 120 120"><use href="#chispa"/></svg><span>Elegidas a mano</span><svg viewBox="-60 -60 120 120"><use href="#chispa"/></svg><span>Compra protegida en Vinted</span><svg viewBox="-60 -60 120 120"><use href="#chispa"/></svg><span>Segunda mano de primera</span><svg viewBox="-60 -60 120 120"><use href="#chispa"/></svg>
+        <span>Piezas únicas</span><svg viewBox="-60 -60 120 120"><use href="#chispa"/></svg><span>Elegidas a mano</span><svg viewBox="-60 -60 120 120"><use href="#chispa"/></svg><span>Compra protegida en Vinted</span><svg viewBox="-60 -60 120 120"><use href="#chispa"/></svg><span>Segunda mano de primera</span><svg viewBox="-60 -60 120 120"><use href="#chispa"/></svg>
+      </div>
+    </div>
+
+    <!-- EL SELLO: proceso -->
+    <section class="proceso" id="sello" aria-labelledby="titulo-sello">
+      <div class="proceso__fijo">
+        <div class="proceso__texto">
+          <h2 id="titulo-sello" class="seccion__titulo">Nada lleva nuestro sello sin pasar por nuestras manos</h2>
+          <ol class="pasos">
+            <li class="paso"><span class="paso__n">1</span><div><h3>La elegimos</h3><p>Buscamos prendas con historia y buen tejido. Si no nos la pondríamos, no entra.</p></div></li>
+            <li class="paso"><span class="paso__n">2</span><div><h3>La revisamos</h3><p>Costuras, cremalleras, botones y tela. Cualquier detalle queda escrito en la ficha.</p></div></li>
+            <li class="paso"><span class="paso__n">3</span><div><h3>La fotografiamos tal cual es</h3><p>Fotos reales, con su talla y su estado, sin filtros que engañen.</p></div></li>
+            <li class="paso"><span class="paso__n">4</span><div><h3>Le cosemos el sello</h3><p>Solo entonces la publicamos. Y tú la compras con la protección de Vinted.</p></div></li>
+          </ol>
+        </div>
+        <div class="proceso__escena" aria-hidden="true">
+          <div class="prenda">
+            <svg viewBox="0 0 400 460" class="prenda__svg">
+              <defs>
+                <pattern id="raya" width="16" height="16" patternUnits="userSpaceOnUse">
+                  <rect width="16" height="16" fill="#f4ead6"/>
+                  <rect x="7.5" width="1.4" height="16" fill="#6b1015" fill-opacity=".55"/>
+                </pattern>
+              </defs>
+              <path d="M140 40 L200 62 L260 40 L330 70 L388 210 L344 230 L310 160 L310 430 L90 430 L90 160 L56 230 L12 210 L70 70 Z" fill="url(#raya)" stroke="#6b1015" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M140 40 L172 120 L200 62 L228 120 L260 40" fill="none" stroke="#6b1015" stroke-width="5" stroke-linejoin="round"/>
+              <path class="prenda__costura" d="M200 62 L200 430"/>
+              <path class="prenda__costura" d="M90 404 L310 404 M56 222 L90 168 M344 222 L310 168"/>
+              <g fill="#6b1015"><circle cx="212" cy="150" r="5"/><circle cx="212" cy="210" r="5"/><circle cx="212" cy="270" r="5"/><circle cx="212" cy="330" r="5"/><circle cx="212" cy="390" r="5"/></g>
+              <text x="285" y="320" text-anchor="middle" font-family="Graduate, Georgia, serif" font-size="64" fill="#6b1015">24</text>
+            </svg>
+            <div class="prenda__revision"></div>
+            <div class="prenda__flash"></div>
+            <div class="estampa"><svg viewBox="-160 -160 320 320"><use href="#logo" x="-160" y="-160" width="320" height="320"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MATCH: desliza como en una app de citas -->
+    <section class="match" id="match" aria-labelledby="titulo-match">
+      <svg class="match__borde match__borde--arriba" aria-hidden="true"><use href="#borde-roto"/></svg>
+      <div class="match__dentro">
+        <div class="match__texto">
+          <h2 id="titulo-match" class="seccion__titulo"><span class="script">Encuentra</span> tu match</h2>
+          <p>Desliza a la derecha lo que te enamora y a la izquierda lo que no. Tus matches se guardan aquí para que los compres en Vinted cuando quieras.</p>
+          <div class="matches" id="matches" hidden>
+            <h3 class="matches__titulo">Tus matches</h3>
+            <ul class="matches__lista" id="matches-lista"></ul>
+          </div>
+        </div>
+        <div class="baraja-zona">
+          <div class="baraja" id="baraja" aria-live="polite"></div>
+          <div class="baraja__botones">
+            <button type="button" class="redondo redondo--no" id="btn-no" aria-label="No me gusta, siguiente prenda" data-cursor="Paso">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6 L18 18 M18 6 L6 18"/></svg>
+            </button>
+            <button type="button" class="redondo redondo--si" id="btn-si" aria-label="Me gusta, guardar como match" data-cursor="Me gusta">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20 C4 14 2 10 4.5 6.5 C7 3.5 10.5 4.5 12 7.5 C13.5 4.5 17 3.5 19.5 6.5 C22 10 20 14 12 20 Z"/></svg>
+            </button>
+          </div>
+          <p class="baraja__ayuda">También puedes usar las flechas del teclado.</p>
+        </div>
+      </div>
+      <svg class="match__borde match__borde--abajo" aria-hidden="true"><use href="#borde-roto"/></svg>
+    </section>
+
+    <!-- COLECCION -->
+    <section class="coleccion" id="coleccion" aria-labelledby="titulo-coleccion">
+      <div class="coleccion__cabeza">
+        <h2 id="titulo-coleccion" class="seccion__titulo">La colección</h2>
+        <p class="coleccion__estado" id="estado-sync" aria-live="polite">Cargando prendas…</p>
+      </div>
+      <p class="aviso-demo" id="aviso-demo" hidden>Estas son prendas de muestra. En cuanto sincronices tu armario de Vinted aparecerán las reales.</p>
+      <div class="filtros" role="toolbar" aria-label="Filtrar la colección">
+        <div class="filtros__cats" id="filtro-cats"></div>
+        <div class="filtros__der">
+          <label class="interruptor"><input type="checkbox" id="ver-vendidas"><span>Mostrar vendidas</span></label>
+          <label class="selector"><span class="sr">Ordenar</span>
+            <select id="orden">
+              <option value="nuevo">Lo más nuevo</option>
+              <option value="precio-asc">Precio, de menor a mayor</option>
+              <option value="precio-desc">Precio, de mayor a menor</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <ul class="rejilla" id="rejilla"></ul>
+      <div class="vacio" id="vacio" hidden>
+        <p>No hay prendas con este filtro ahora mismo.</p>
+        <button class="boton boton--crema" type="button" id="limpiar"><span>Ver todas las prendas</span></button>
+      </div>
+    </section>
+
+    <!-- COMO COMPRAR: el diamante -->
+    <section class="comprar" id="comprar" aria-labelledby="titulo-comprar">
+      <div class="comprar__texto">
+        <h2 id="titulo-comprar" class="seccion__titulo">De primera base a <span class="script">home run</span></h2>
+        <ol class="bases">
+          <li class="base"><h3>Primera base</h3><p>Elige aquí tu prenda. Todo lo que ves está disponible, y lo vendido aparece marcado.</p></li>
+          <li class="base"><h3>Segunda base</h3><p>Pulsa "Comprar en Vinted". Te llevamos directo a su ficha.</p></li>
+          <li class="base"><h3>Tercera base</h3><p>Paga en Vinted, con su protección al comprador y envío a casa o a un punto de recogida.</p></li>
+          <li class="base"><h3>Home run</h3><p>Recíbela y estrénala. Si algo no es como en la ficha, Vinted te cubre.</p></li>
+        </ol>
+      </div>
+      <div class="diamante" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <path class="diamante__hierba" d="M200 20 L380 200 L200 380 L20 200 Z"/>
+          <path class="diamante__linea" id="camino" d="M200 360 L360 200 L200 40 L40 200 Z"/>
+          <path class="diamante__progreso" d="M200 360 L360 200 L200 40 L40 200 Z"/>
+          <rect class="diamante__base" x="346" y="186" width="28" height="28" transform="rotate(45 360 200)"/>
+          <rect class="diamante__base" x="186" y="26" width="28" height="28" transform="rotate(45 200 40)"/>
+          <rect class="diamante__base" x="26" y="186" width="28" height="28" transform="rotate(45 40 200)"/>
+          <path class="diamante__base diamante__home" d="M186 346 L214 346 L214 362 L200 376 L186 362 Z"/>
+          <g class="pelota" transform="translate(200 360)">
+            <circle r="15" fill="#fbf6ea" stroke="#1f0809" stroke-width="2"/>
+            <path d="M-9,-11 C-3,-4 -3,4 -9,11 M9,-11 C3,-4 3,4 9,11" fill="none" stroke="#d2332b" stroke-width="1.6" stroke-dasharray="2 2"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <svg class="pie__borde" aria-hidden="true"><use href="#borde-roto"/></svg>
+    <a class="pie__grande magnetico" href="https://www.vinted.es/member/3190974402" target="_blank" rel="noopener" data-cursor="Abrir">Nos vemos en Vinted</a>
+    <div class="pie__fila">
+      <p>Just Cream Vintage. Ropa vintage y de segunda mano en España.</p>
+      <p><a href="#arriba">Volver arriba</a></p>
+    </div>
+  </footer>
+
+  <!-- Ficha de producto: el reverso del cromo -->
+  <dialog class="ficha" id="ficha" aria-labelledby="ficha-titulo">
+    <button class="ficha__cerrar" type="button" id="ficha-cerrar" aria-label="Cerrar ficha">Cerrar</button>
+    <div class="ficha__galeria">
+      <div class="ficha__foto"><img id="ficha-img" alt=""></div>
+      <div class="ficha__miniaturas" id="ficha-minis"></div>
+    </div>
+    <div class="ficha__info">
+      <p class="ficha__marca" id="ficha-marca"></p>
+      <h2 class="ficha__titulo" id="ficha-titulo"></h2>
+      <p class="ficha__precio" id="ficha-precio"></p>
+      <table class="ficha__datos">
+        <caption class="sr">Datos de la prenda</caption>
+        <tr><th scope="row">Talla</th><td id="ficha-talla"></td></tr>
+        <tr><th scope="row">Estado</th><td id="ficha-estadoprenda"></td></tr>
+        <tr><th scope="row">Tipo</th><td id="ficha-cat"></td></tr>
+      </table>
+      <p class="ficha__desc" id="ficha-desc"></p>
+      <a class="boton boton--ancho" id="ficha-comprar" href="#" target="_blank" rel="noopener" data-cursor="Vinted"><span>Comprar en Vinted</span></a>
+      <button type="button" class="ficha__guardar" id="ficha-guardar" aria-pressed="false">Guardar como match</button>
+      <p class="ficha__nota" id="ficha-nota">El pago y el envío se hacen en Vinted, con su protección al comprador.</p>
+    </div>
+  </dialog>
+
+  <!-- Aviso de match -->
+  <div class="es-match" id="es-match" hidden role="status">
+    <div class="es-match__caja">
+      <p class="es-match__titulo">¡Es un match!</p>
+      <div class="es-match__fotos"><img id="es-match-img" alt=""><svg viewBox="-160 -160 320 320" aria-hidden="true"><use href="#logo" x="-160" y="-160" width="320" height="320"/></svg></div>
+      <p class="es-match__texto" id="es-match-texto"></p>
+      <div class="es-match__botones">
+        <a class="boton" id="es-match-comprar" href="#" target="_blank" rel="noopener"><span>Comprar en Vinted</span></a>
+        <button class="boton boton--crema" type="button" id="es-match-seguir"><span>Seguir deslizando</span></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/categorias.js"></script>
+  <script src="js/fondo.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/match.js"></script>
+</body>
+</html>
