@@ -2,7 +2,7 @@ name: Sincronizar con Vinted
 
 on:
   schedule:
-    - cron: '23 */3 * * *'   # cada 3 horas (hora UTC)
+    - cron: '*/10 * * * *'   # cada 10 minutos (GitHub puede retrasarlo si va cargado)
   workflow_dispatch:          # y a mano desde la pestaña Actions
 
 permissions:
@@ -15,7 +15,7 @@ concurrency:
 jobs:
   sincronizar:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
 
