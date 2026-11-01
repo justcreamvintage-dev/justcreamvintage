@@ -28,13 +28,13 @@ jobs:
 
       - name: Publicar los cambios
         run: |
-          if [ -n "$(git status --porcelain data/productos.json)" ]; then
+          git add -A data prenda sitemap.xml index.html
+          if git diff --cached --quiet; then
+            echo 'Sin cambios: no se publica nada'
+          else
             git config user.name  'Sincronización JCV'
             git config user.email 'actions@users.noreply.github.com'
-            git add data/productos.json
             git commit -m 'Sincronizar con Vinted'
             git push
             echo 'Publicado'
-          else
-            echo 'Sin cambios: no se publica nada'
           fi
