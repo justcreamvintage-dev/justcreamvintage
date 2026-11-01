@@ -167,7 +167,8 @@ function fusionar(previo, leidos, ahora) {
   /* lo que estaba publicado y ya no aparece en Vinted se da por vendido */
   for (const [id, a] of antes) {
     if (vistos.has(id)) continue;
-    const conSlug = { ...a, slug: a.slug || slug(a.titulo, a.id) };
+    /* a las vendidas se les recalcula tambien la categoria: si no, arrastran la de antes */
+    const conSlug = { ...a, slug: a.slug || slug(a.titulo, a.id), categoria: categoria(a.titulo) };
     if (conSlug.estado_venta !== 'vendida') { lista.push({ ...conSlug, estado_venta: 'vendida', vendido_en: ahora }); r.vendidas++; }
     else lista.push(conSlug);
   }
