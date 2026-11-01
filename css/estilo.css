@@ -446,3 +446,76 @@ p { margin: 0; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   .grano, .chispa { animation: none; }
 }
+
+/* ---------- MEDIDOR DE MATCHES: la barra de feria ---------- */
+.baraja-fila { display: flex; align-items: stretch; gap: clamp(10px, 2vw, 22px); width: 100%; justify-content: center; }
+.baraja-fila .baraja { flex: 0 1 340px; }
+
+.medidor { flex: none; display: grid; grid-template-rows: 1fr auto auto; justify-items: center; gap: .3rem; width: 46px; }
+.medidor__tubo {
+  position: relative; width: 34px; height: 100%; min-height: 220px; border-radius: 999px;
+  border: 2px solid var(--crema); background: rgb(31 8 9 / .55); overflow: hidden;
+  box-shadow: inset 0 0 14px rgb(0 0 0 / .5), 3px 3px 0 var(--tinta);
+}
+.medidor__relleno {
+  position: absolute; inset: auto 0 0 0; height: 0%;
+  background: linear-gradient(to top, #d2332b 0%, #ff7a3d 55%, #ffd36b 100%);
+  transition: height .55s var(--muelle);
+}
+.medidor__relleno::after {
+  content: ""; position: absolute; inset: 0; opacity: .45;
+  background: repeating-linear-gradient(to top, rgb(255 255 255 / .22) 0 3px, transparent 3px 11px);
+}
+.medidor__marcas { position: absolute; inset: 0; }
+.medidor__marcas i {
+  position: absolute; left: 0; right: 0; height: 2px; background: rgb(241 230 207 / .5);
+  display: block;
+}
+.medidor__marcas i::after {
+  content: attr(data-et); position: absolute; right: 40px; top: -.62em;
+  font-family: var(--f-varsity); font-size: .68rem; color: var(--crema-2); white-space: nowrap;
+  opacity: .75; transition: opacity .3s, color .3s, transform .4s var(--muelle);
+}
+.medidor__marcas i.lograda { background: var(--crema); box-shadow: 0 0 10px #ffd36b; }
+.medidor__marcas i.lograda::after { opacity: 1; color: #ffd36b; transform: scale(1.12); }
+
+/* la llama corona el nivel y sube con el */
+.medidor__fuego { position: absolute; left: 0; right: 0; bottom: var(--nivel, 0%); height: 0; opacity: 0; transition: opacity .3s, bottom .55s var(--muelle); }
+.medidor.vivo .medidor__fuego { opacity: .95; }
+.medidor.ardiendo .medidor__fuego { opacity: 1; filter: drop-shadow(0 0 9px #ff8a3d); }
+.medidor.ardiendo .medidor__fuego span { height: 34px; }
+.medidor.ardiendo .medidor__fuego span:nth-child(2) { height: 46px; }
+.medidor.ardiendo .medidor__tubo { box-shadow: inset 0 0 14px rgb(0 0 0 / .5), 3px 3px 0 var(--tinta), 0 0 22px rgb(255 160 70 / .65); }
+.medidor__fuego span {
+  position: absolute; bottom: 0; width: 13px; height: 22px; border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
+  background: radial-gradient(circle at 50% 75%, #fff2b0, #ffb13d 45%, #d2332b 80%, transparent 82%);
+  filter: blur(.4px); animation: llama 1s infinite ease-in-out;
+}
+.medidor__fuego span:nth-child(1) { left: 2px; animation-delay: -.2s; }
+.medidor__fuego span:nth-child(2) { left: 9px; height: 30px; animation-delay: -.6s; }
+.medidor__fuego span:nth-child(3) { left: 17px; animation-delay: -.9s; }
+@keyframes llama {
+  0%, 100% { transform: translateY(-4px) scaleY(1) scaleX(1); opacity: .95; }
+  50% { transform: translateY(-13px) scaleY(1.35) scaleX(.82); opacity: .7; }
+}
+
+.medidor__cifra { font-family: var(--f-varsity); font-size: 1.3rem; color: var(--crema); line-height: 1; transition: transform .4s var(--muelle), color .3s; }
+.medidor.sube .medidor__cifra { transform: scale(1.45); color: #ffd36b; }
+.medidor__pie { font-size: .68rem; color: var(--crema-2); opacity: .75; }
+.medidor.sube .medidor__tubo { animation: golpe .45s var(--muelle); }
+@keyframes golpe { 40% { transform: scale(1.1, .96); } }
+
+.matches__cuenta { font-size: var(--t-s); color: var(--crema-2); margin: 0; }
+.matches__cuenta b { color: #ffd36b; font-family: var(--f-varsity); }
+.matches__pista { font-size: var(--t-xs); color: var(--crema-2); opacity: .8; margin: 0; max-width: 42ch; }
+.matches .boton { justify-self: start; }
+
+@media (prefers-reduced-motion: reduce) {
+  .medidor__relleno, .medidor__cifra { transition: none; }
+  .medidor__fuego span, .medidor.sube .medidor__tubo { animation: none; }
+}
+@media (max-width: 520px) {
+  .medidor { width: 38px; }
+  .medidor__tubo { width: 26px; min-height: 180px; }
+  .medidor__marcas i::after { right: 31px; font-size: .6rem; }
+}
