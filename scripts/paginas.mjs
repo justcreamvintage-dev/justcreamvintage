@@ -147,7 +147,10 @@ const CABEZA = (p) => {
 <meta name="twitter:title" content="${esc(titulo)} de segunda mano | ${MARCA}">
 <meta name="twitter:description" content="${esc(desc)}">
 <meta name="twitter:image" content="${esc(foto)}">
-<link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/img/icono-96.png" type="image/png" sizes="96x96">
+<link rel="icon" href="/img/icono-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/img/icono-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Graduate&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
@@ -255,7 +258,7 @@ function listaInicio(datos) {
     name: MARCA,
     url: SITIO + '/',
     description: 'Tienda de ropa vintage y de segunda mano: prendas únicas elegidas a mano y revisadas una a una, con envío a toda España y compra protegida a través de Vinted.',
-    logo: SITIO + '/img/favicon.svg',
+    logo: SITIO + '/img/icono-512.png',
     image: SITIO + '/img/og.png',
     areaServed: 'ES',
     currenciesAccepted: 'EUR',
