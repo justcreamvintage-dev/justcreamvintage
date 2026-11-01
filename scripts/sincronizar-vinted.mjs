@@ -6,11 +6,14 @@ import { readFile, writeFile, rm } from 'node:fs/promises';
 import { execFile } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { generar, slug } from './paginas.mjs';
 
 const ID = '3190974402';
 const PERFIL = 'https://www.vinted.es/member/' + ID;
 const BASE = 'https://www.vinted.es';
-const ARCHIVO = new URL('../data/productos.json', import.meta.url);
+const RAIZ = fileURLToPath(new URL('../', import.meta.url));
+const ARCHIVO = join(RAIZ, 'data', 'productos.json');
 const DIAS_VENDIDAS = 45;          /* una prenda vendida se sigue viendo este tiempo */
 const MAX_DESCRIPCIONES = +(process.env.JCV_MAX_DESCRIPCIONES || 5);      /* descripciones nuevas que se leen por ejecucion */
 const ESPERA_MS = 2000;            /* pausa entre lecturas de ficha, para no agobiar a Vinted */
@@ -155,6 +158,7 @@ function fusionar(previo, leidos, ahora) {
       url: it.url,
       estado_venta: it.estado_venta,
       categoria: categoria(it.titulo),
+      slug: slug(it.titulo, it.id),
       publicado: fecha(it.publicado) || (a && a.publicado) || ahora,
       vendido_en: null
     };
@@ -170,8 +174,9 @@ function fusionar(previo, leidos, ahora) {
   /* lo que estaba publicado y ya no aparece en Vinted se da por vendido */
   for (const [id, a] of antes) {
     if (vistos.has(id)) continue;
-    if (a.estado_venta !== 'vendida') { lista.push({ ...a, estado_venta: 'vendida', vendido_en: ahora }); r.vendidas++; }
-    else lista.push(a);
+    const conSlug = { ...a, slug: a.slug || slug(a.titulo, a.id) };
+    if (conSlug.estado_venta !== 'vendida') { lista.push({ ...conSlug, estado_venta: 'vendida', vendido_en: ahora }); r.vendidas++; }
+    else lista.push(conSlug);
   }
 
   const limite = Date.now() - DIAS_VENDIDAS * 864e5;
@@ -211,15 +216,21 @@ try {
 
   if (SECO) { console.log('--dry-run: no se escribe nada'); process.exit(0); }
 
-  /* se escribe con 'actualizado' del archivo anterior para comparar solo el contenido real */
-  const nuevoTexto = JSON.stringify(datos, null, 1) + '\n';
+  /* se compara solo el contenido, sin la fecha, para no publicar por publicar */
   const comparable = (o) => o && JSON.stringify({ ...o, actualizado: '' });
-  if (previo && comparable(previo) === comparable(datos)) {
-    console.log('Sin cambios respecto a la web: no se escribe');
-    process.exit(0);
+  const sinCambios = previo && comparable(previo) === comparable(datos);
+  const definitivo = sinCambios ? previo : datos;   /* conserva la fecha vieja: el sitemap no cambia porque si */
+
+  if (sinCambios) {
+    console.log('Sin cambios en el armario');
+  } else {
+    await writeFile(ARCHIVO, JSON.stringify(definitivo, null, 1) + '\n');
+    console.log('data/productos.json actualizado');
   }
-  await writeFile(ARCHIVO, nuevoTexto);
-  console.log('data/productos.json actualizado');
+
+  /* las paginas de cada prenda y el sitemap se rehacen siempre: si ya estaban bien, git no vera nada */
+  const hechas = await generar(definitivo, RAIZ);
+  console.log('Páginas de prenda: ' + hechas.paginas);
 } catch (e) {
   console.error('Error: ' + (e && e.message ? e.message : e));
   process.exit(1);
