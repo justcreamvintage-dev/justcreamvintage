@@ -217,8 +217,7 @@ function paginaPrenda(p, relacionadas) {
 
     ${vendida
       ? `<p class="p-nota">Esta prenda ya tiene nueva dueña o dueño. <a href="../#coleccion">Mira el resto de la colección</a>.</p>`
-      : `<p><a class="p-boton" href="${esc(p.url)}" target="_blank" rel="noopener">Comprar en Vinted</a></p>
-         <p class="p-nota">El pago y el envío se hacen en Vinted, con su protección al comprador.</p>`}
+      : ''}
 
     <div class="p-sobre">
       <h2>Cómo elegimos esta prenda</h2>
@@ -228,6 +227,14 @@ function paginaPrenda(p, relacionadas) {
 </main>
 
 ${otras}
+
+${vendida ? '' : `<div class="p-barra">
+  <div class="p-barra__txt">
+    <span class="p-barra__precio">${esc(euros(p.precio, p.moneda))}</span>
+    <span class="p-barra__nota">Pago y envío en Vinted, con su protección al comprador</span>
+  </div>
+  <a class="p-boton" href="${esc(p.url)}" target="_blank" rel="noopener">Comprar en Vinted</a>
+</div>`}
 
 <footer class="p-pie">
   <p><a href="${PERFIL}" target="_blank" rel="noopener">Nos vemos en Vinted</a></p>
