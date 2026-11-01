@@ -82,3 +82,22 @@ a { color: var(--granate); }
 @media (max-width: 820px) {
   .p-ficha { grid-template-columns: 1fr; }
 }
+
+/* Barra de compra siempre a la vista: la gente llega aqui desde Google y no deberia tener que
+   buscar el boton ni volver arriba. */
+.p-barra {
+  position: sticky; bottom: 0; z-index: 5;
+  display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; align-items: center; justify-content: space-between;
+  padding: .8rem clamp(16px, 4vw, 48px) calc(.8rem + env(safe-area-inset-bottom, 0px));
+  background: var(--crema); border-top: 2px solid var(--granate);
+  box-shadow: 0 -14px 22px -16px rgb(31 8 9 / .55);
+}
+.p-barra__txt { display: grid; gap: .1rem; min-width: 0; }
+.p-barra__precio { font-family: var(--f-varsity); font-size: 1.45rem; color: var(--granate); }
+.p-barra__nota { font-size: .82rem; color: var(--tenue); }
+.p-barra .p-boton { margin: 0; flex: none; }
+body { padding-bottom: 0; }
+@media (max-width: 560px) {
+  .p-barra { padding-inline: 16px; }
+  .p-barra .p-boton { width: 100%; text-align: center; }
+}

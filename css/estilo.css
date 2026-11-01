@@ -393,14 +393,28 @@ p { margin: 0; }
   width: min(1080px, calc(100vw - 32px)); max-height: calc(100svh - 48px); padding: 0; border: 2px solid var(--tinta); border-radius: 18px;
   color: var(--tinta); background: var(--papel); box-shadow: 10px 10px 0 var(--tinta); overflow: auto; overscroll-behavior: contain;
 }
-.ficha[open] { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); animation: abrir .6s var(--muelle); }
+.ficha[open] { display: block; animation: abrir .6s var(--muelle); }
+/* el cuerpo es lo unico en dos columnas; la barra de compra va fuera, pegada abajo */
+.ficha__cuerpo { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); }
+.ficha__barra {
+  position: sticky; bottom: 0; z-index: 4;
+  display: flex; flex-wrap: wrap; gap: .7rem 1.2rem; align-items: center; justify-content: space-between;
+  padding: .85rem clamp(16px, 2.6vw, 30px) calc(.85rem + env(safe-area-inset-bottom, 0px));
+  background: var(--crema); border-top: 2px solid var(--granate);
+  box-shadow: 0 -14px 22px -16px rgb(31 8 9 / .55);
+}
+.ficha__barra-txt { display: grid; gap: .1rem; min-width: 0; }
+.ficha__barra-precio { font-family: var(--f-varsity); font-size: 1.45rem; color: var(--granate); font-variant-numeric: tabular-nums; }
+.ficha__barra .boton { flex: none; }
+.ficha__desc-t { font-family: var(--f-varsity); font-size: .95rem; margin: .4rem 0 .3rem; }
 .ficha::backdrop { background: rgb(31 8 9 / .72); backdrop-filter: blur(5px); }
 @keyframes abrir { from { opacity: 0; transform: translateY(40px) rotate(-3deg) scale(.95); } }
 .ficha__cerrar { position: absolute; top: 14px; right: 14px; z-index: 3; font: inherit; font-size: var(--t-s); color: var(--crema); background: var(--tinta); border: 0; border-radius: 999px; padding: .4rem 1rem; cursor: pointer; }
 .ficha__galeria { display: grid; gap: .6rem; padding: 14px; align-content: start; min-width: 0; }
 .ficha__foto { aspect-ratio: 4 / 5; max-width: 100%; overflow: hidden; border-radius: 10px; border: 3px solid var(--granate); background: var(--crema-2); }
 .ficha__foto img { width: 100%; height: 100%; object-fit: cover; }
-.ficha__miniaturas { display: flex; gap: .5rem; overflow-x: auto; padding: 4px; }
+/* en rejilla y no en carrusel: un carrusel horizontal obliga a arrastrar para ver las fotos */
+.ficha__miniaturas { display: flex; flex-wrap: wrap; gap: .5rem; padding: 4px; }
 .ficha__miniaturas button { all: unset; flex: none; width: 60px; aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden; cursor: pointer; opacity: .55; border: 2px solid transparent; transition: opacity .3s; }
 .ficha__miniaturas button[aria-current="true"] { opacity: 1; border-color: var(--granate); }
 .ficha__miniaturas button:focus-visible { outline: 3px solid var(--rojo); }
@@ -412,13 +426,15 @@ p { margin: 0; }
 .ficha__datos { width: 100%; border-collapse: collapse; font-size: 1rem; border: 2px solid var(--granate); }
 .ficha__datos th { text-align: left; font-weight: 400; font-family: var(--f-varsity); font-size: .85rem; background: var(--granate); color: var(--crema); padding: .45rem .8rem; width: 36%; border-bottom: 1px solid rgb(241 230 207 / .3); }
 .ficha__datos td { padding: .45rem .8rem; border-bottom: 1px dashed rgb(107 16 21 / .3); }
-.ficha__desc { color: var(--tenue); white-space: pre-line; max-width: 60ch; font-size: 1.02rem; }
+.ficha__desc p { color: var(--tenue); white-space: pre-line; max-width: 60ch; font-size: 1.02rem; margin: 0; }
 .ficha__guardar { justify-self: start; font: inherit; font-size: var(--t-s); color: var(--granate); background: none; border: 0; padding: .2rem 0; cursor: pointer; text-decoration: underline; text-decoration-style: dashed; text-underline-offset: 4px; }
 .ficha__guardar[aria-pressed="true"] { color: var(--rojo); }
 .ficha__nota { font-size: var(--t-xs); color: var(--tenue); }
 @media (max-width: 760px) {
   .ficha { width: 100vw; max-width: 100vw; max-height: 100svh; height: 100svh; border-radius: 0; border: 0; box-shadow: none; }
-  .ficha[open] { grid-template-columns: minmax(0, 1fr); align-content: start; }
+  .ficha__cuerpo { grid-template-columns: minmax(0, 1fr); align-content: start; }
+  .ficha__barra { padding-inline: 16px; }
+  .ficha__barra .boton { width: 100%; justify-content: center; }
 }
 
 @media (max-width: 640px) {
