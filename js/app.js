@@ -436,6 +436,7 @@
     $('#ficha-marca').textContent = p.marca || 'Sin marca';
     $('#ficha-titulo').textContent = p.titulo;
     $('#ficha-precio').textContent = euros(p.precio, p.moneda);
+    $('#ficha-barra-precio').textContent = euros(p.precio, p.moneda);
     $('#ficha-talla').textContent = p.talla || 'Única';
     $('#ficha-estadoprenda').textContent = p.estado || 'Buen estado';
     $('#ficha-cat').textContent = categoriaDe(p);
@@ -456,6 +457,7 @@
         : 'El pago y el envío se hacen en Vinted, con su protección al comprador.';
     }
     if (lenis) lenis.stop();
+    ficha.scrollTop = 0;
     if (!ficha.open) {
       ficha.showModal();
       /* mientras dura la animacion de apertura el dialogo lleva un transform, y eso mueve el

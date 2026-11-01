@@ -131,6 +131,75 @@
     lanzar(e.key === 'ArrowRight' ? 1 : -1);
   });
 
+
+  /* ---------- Medidor de matches: barra de feria + lote ----------
+     DESCUENTOS son los tramos de "descuento por lote" del perfil de Vinted. Mientras este vacio,
+     el medidor cuenta prendas y no promete ningun porcentaje: se rellena en cuanto esten puestos
+     en Vinted (Ajustes, Descuentos de lote) con los mismos numeros, p.ej.:
+       var DESCUENTOS = [{ n: 2, pct: 5 }, { n: 3, pct: 10 }, { n: 5, pct: 15 }]; */
+  var DESCUENTOS = [];
+  var TOPE = DESCUENTOS.length ? DESCUENTOS[DESCUENTOS.length - 1].n : 5;
+
+  var medidor = $('#medidor'), relleno = $('#medidor-relleno'), marcas = $('#medidor-marcas');
+  var cifra = $('#medidor-cifra'), cuenta = $('#matches-cuenta'), pista = $('#matches-pista');
+  var ultimoN = -1;
+
+  if (marcas) {
+    marcas.innerHTML = (DESCUENTOS.length ? DESCUENTOS : [{ n: 2 }, { n: 3 }, { n: 5 }]).map(function (t) {
+      return '<i data-n="' + t.n + '" data-et="' + (t.pct ? '-' + t.pct + '%' : t.n) + '" style="bottom:' + Math.min(96, t.n / TOPE * 92) + '%"></i>';
+    }).join('');
+  }
+
+  function tramo(n) {
+    var r = null;
+    DESCUENTOS.forEach(function (t) { if (n >= t.n) r = t; });
+    return r;
+  }
+
+  function pintarMedidor(n, subio) {
+    if (!medidor) return;
+    var pct = Math.min(100, n / TOPE * 100);
+    relleno.style.height = pct + '%';
+    medidor.style.setProperty('--nivel', pct + '%');
+    cifra.textContent = n;
+    medidor.classList.toggle('vivo', n > 0);
+    medidor.classList.toggle('ardiendo', n >= TOPE);
+    Array.prototype.forEach.call(marcas.children, function (i) {
+      i.classList.toggle('lograda', n >= +i.getAttribute('data-n'));
+    });
+    if (subio && !J.reducido) {
+      medidor.classList.remove('sube'); void medidor.offsetWidth; medidor.classList.add('sube');
+      setTimeout(function () { medidor.classList.remove('sube'); }, 600);
+      confeti(medidor, n >= TOPE ? 16 : 6);
+    }
+    if (subio && navigator.vibrate) { try { navigator.vibrate(tramo(n) && tramo(n).n === n ? [18, 40, 18] : 14); } catch (e) { /* nada */ } }
+  }
+
+  function pintarLote(prods) {
+    if (!cuenta) return;
+    var vivas = prods.filter(function (p) { return p.estado_venta !== 'vendida'; });
+    var n = vivas.length;
+    var total = vivas.reduce(function (a, p) { return a + (+p.precio || 0); }, 0);
+    var t = tramo(n);
+    var texto = '<b>' + n + '</b> ' + (n === 1 ? 'prenda' : 'prendas') + ' · ' + J.euros(total, (vivas[0] || {}).moneda);
+    if (t) texto += ' · lote <b>-' + t.pct + '%</b> ≈ ' + J.euros(total * (1 - t.pct / 100), (vivas[0] || {}).moneda);
+    cuenta.innerHTML = texto;
+
+    var sig = null;
+    DESCUENTOS.forEach(function (x) { if (!sig && n < x.n) sig = x; });
+    if (DESCUENTOS.length) {
+      pista.textContent = sig
+        ? 'Sigue deslizando: con ' + sig.n + ' prendas el lote te sale un ' + sig.pct + '% más barato.'
+        : 'Ya tienes el mayor descuento del lote. Ábrelo en Vinted y añádelas juntas.';
+    } else {
+      pista.textContent = n > 1
+        ? 'Cómpralas en un solo lote: van en el mismo envío y pagas unos gastos, no uno por prenda.'
+        : 'Sigue deslizando: comprando varias juntas en un lote pagas un solo envío.';
+    }
+    pintarMedidor(n, ultimoN >= 0 && n > ultimoN);
+    ultimoN = n;
+  }
+
   /* Lista de matches guardados */
   function pintarMatches() {
     var ids = J.matches.lista();
@@ -140,6 +209,7 @@
       var f = J.fotos(p)[0] || '';
       return '<li><button type="button" data-id="' + J.esc(p.id) + '" aria-label="' + J.esc(p.titulo + (p.estado_venta === 'vendida' ? ', vendida' : '')) + '" data-cursor="Ver">' + (f ? '<img src="' + J.esc(f) + '" alt=""' + (p.estado_venta === 'vendida' ? ' style="filter:grayscale(1)"' : '') + '>' : '') + '</button></li>';
     }).join('');
+    pintarLote(prods);
   }
   listaMatches.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
