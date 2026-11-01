@@ -78,7 +78,7 @@ p { margin: 0; }
 .cursor.activo .cursor__gota { width: 46px; height: 46px; margin: -23px 0 0 -23px; background: rgb(210 51 43 / .35); }
 .cursor.con-texto .cursor__gota { width: 92px; height: 92px; margin: -46px 0 0 -46px; background: var(--granate); }
 .cursor.con-texto .cursor__texto { opacity: 1; }
-.cursor.fuera { opacity: 0; }
+.cursor.fuera, .cursor.mudando { opacity: 0; }
 
 /* ---------- Cabecera ---------- */
 .cabecera {

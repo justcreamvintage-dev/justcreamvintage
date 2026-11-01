@@ -1,0 +1,84 @@
+/* Paginas de cada prenda: ligeras, sin animaciones, pensadas para buscadores y para abrirse rapido.
+   Mismos colores y tipografias que la web. */
+:root {
+  --tinta: #1f0809;
+  --granate: #6b1015;
+  --rojo: #d2332b;
+  --crema: #f1e6cf;
+  --crema-2: #e6d5b3;
+  --papel: #fbf5e8;
+  --tenue: #6e4b44;
+  --f-script: "Yellowtail", "Brush Script MT", cursive;
+  --f-varsity: "Graduate", "Rockwell", Georgia, serif;
+  --f-texto: "Newsreader", "Iowan Old Style", Georgia, serif;
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--papel); color: var(--tinta);
+  font-family: var(--f-texto); font-size: 1.05rem; line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--granate); }
+
+.p-cabecera {
+  display: flex; flex-wrap: wrap; gap: 1rem 1.6rem; align-items: baseline; justify-content: space-between;
+  padding: 1rem clamp(16px, 4vw, 48px); background: var(--tinta); color: var(--crema);
+}
+.p-logo { font-family: var(--f-varsity); font-size: 1.25rem; color: var(--crema); text-decoration: none; letter-spacing: .02em; }
+.p-cabecera nav a { color: var(--crema); margin-left: 1.2rem; font-size: .95rem; }
+
+.p-miga { grid-column: 1 / -1; font-size: .85rem; color: var(--tenue); margin-bottom: .4rem; }
+.p-miga span { margin: 0 .35rem; }
+
+.p-ficha {
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 44px);
+  max-width: 1180px; margin: 0 auto; padding: clamp(20px, 4vw, 52px) clamp(16px, 4vw, 48px);
+}
+.p-galeria { min-width: 0; display: grid; gap: .7rem; align-content: start; }
+.p-foto { margin: 0; border: 3px solid var(--granate); border-radius: 12px; overflow: hidden; background: var(--crema-2); }
+.p-foto img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.p-minis { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: .5rem; margin: 0; padding: 0; }
+.p-minis img { border-radius: 8px; border: 2px solid var(--crema-2); aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+
+.p-info { min-width: 0; }
+.p-marca { font-family: var(--f-script); font-size: 1.7rem; color: var(--rojo); margin: 0 0 .2rem; }
+.p-info h1 { font-family: var(--f-varsity); font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.15; margin: 0 0 .6rem; }
+.p-info h2 { font-family: var(--f-varsity); font-size: 1.05rem; margin: 1.8rem 0 .4rem; }
+.p-resumen { color: var(--tenue); font-size: 1.02rem; margin: 0 0 1rem; }
+.p-precio { font-family: var(--f-varsity); font-size: 1.9rem; color: var(--granate); margin: 0 0 1.2rem; }
+.p-sello { font-family: var(--f-texto); font-size: .8rem; color: var(--crema); background: var(--tinta); border-radius: 999px; padding: .2rem .7rem; vertical-align: middle; }
+.p-sello--res { background: var(--rojo); }
+
+.p-datos { width: 100%; border-collapse: collapse; border: 2px solid var(--granate); font-size: .98rem; }
+.p-datos th { text-align: left; font-family: var(--f-varsity); font-size: .8rem; font-weight: 400; background: var(--granate); color: var(--crema); padding: .45rem .8rem; width: 36%; }
+.p-datos td { padding: .45rem .8rem; border-bottom: 1px dashed rgb(107 16 21 / .3); }
+
+.p-desc p { white-space: pre-line; color: var(--tenue); margin: 0; }
+.p-sobre p { color: var(--tenue); margin: 0; }
+
+.p-boton {
+  display: inline-block; margin: 1.6rem 0 .4rem; padding: .85rem 1.8rem; border-radius: 10px;
+  background: var(--granate); color: var(--crema); text-decoration: none;
+  font-family: var(--f-varsity); font-size: 1rem; letter-spacing: .04em;
+  border: 2px solid var(--tinta); box-shadow: 4px 4px 0 var(--tinta);
+}
+.p-boton:hover { background: var(--rojo); }
+.p-nota { font-size: .85rem; color: var(--tenue); }
+
+.p-mas { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px) clamp(28px, 5vw, 60px); }
+.p-mas h2 { font-family: var(--f-varsity); font-size: 1.2rem; margin: 0 0 1rem; }
+.p-rejilla { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 1rem; }
+.p-rejilla a { display: grid; gap: .3rem; text-decoration: none; color: var(--tinta); }
+.p-rejilla img { border-radius: 10px; border: 2px solid var(--granate); aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+.p-rejilla__t { font-size: .88rem; line-height: 1.3; }
+.p-rejilla__p { font-family: var(--f-varsity); font-size: .95rem; color: var(--granate); }
+
+.p-pie { background: var(--tinta); color: var(--crema); padding: 2rem clamp(16px, 4vw, 48px); font-size: .9rem; }
+.p-pie a { color: var(--crema); }
+.p-pie p:first-child a { font-family: var(--f-script); font-size: 1.8rem; }
+
+@media (max-width: 820px) {
+  .p-ficha { grid-template-columns: 1fr; }
+}
