@@ -303,7 +303,9 @@
         var firma = JSON.stringify(lista.map(function (p) { return [p.id, p.estado_venta, p.precio]; }));
         $('#aviso-demo').hidden = d.fuente !== 'demo';
         var disp = lista.filter(function (p) { return p.estado_venta !== 'vendida'; }).length;
-        estadoSync.textContent = disp + (disp === 1 ? ' prenda disponible' : ' prendas disponibles') + '. Sincronizado con Vinted ' + cuando(d.actualizado) + '.';
+        /* el recuento y la hora de sincronizacion no se ensenan: la linea solo aparece si algo falla */
+        estadoSync.textContent = '';
+        estadoSync.hidden = true;
         if (firma === estado.firma) return;
         estado.firma = firma;
         window.JCV.productos = lista;
@@ -314,6 +316,7 @@
       .catch(function () {
         if (!primera) return;
         estadoSync.textContent = 'No se ha podido cargar la colección. Puedes ver todas las prendas en Vinted.';
+        estadoSync.hidden = false;
         rejilla.innerHTML = '';
         vacio.hidden = false;
         vacio.querySelector('p').innerHTML = 'La colección no se ha cargado. <a href="' + PERFIL + '" target="_blank" rel="noopener">Abrir el perfil en Vinted</a>.';
