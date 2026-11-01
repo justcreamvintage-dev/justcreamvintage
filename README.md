@@ -50,10 +50,25 @@ Si Vinted cambia su web y la automática deja de funcionar, sigue estando el mar
 | `js/match.js` | "Encuentra tu match": prendas para deslizar |
 | `js/categorias.js` | Clasifica las prendas por el título |
 | `data/productos.json` | Las prendas. Lo reescribe la sincronización |
+| `prenda/*.html` | Una página por prenda, para buscadores. Las rehace la sincronización |
+| `css/prenda.css` | Estilos de esas páginas |
+| `sitemap.xml` | Mapa del sitio. Lo rehace la sincronización |
+| `img/og.png` | Imagen de la web al compartirla en redes o WhatsApp |
 | `scripts/sincronizar-vinted.mjs` | Sincronización automática (la que corre en GitHub Actions) |
+| `scripts/paginas.mjs` | Genera las páginas de prenda, el sitemap y los datos estructurados |
 | `.github/workflows/sincronizar.yml` | Cuándo y cómo se ejecuta esa sincronización |
 | `sincronizar.html`, `js/sincronizar.js` | Página privada y marcador de la sincronización manual |
 | `CNAME` | Dominio para GitHub Pages |
+
+## SEO
+
+Cada prenda tiene su propia página en `prenda/`, con su título y descripción en español, sus fotos, sus datos estructurados de producto (precio, talla, estado, disponibilidad) y enlaces a otras prendas. Las genera la misma sincronización, así que aparecen y desaparecen solas con el armario de Vinted.
+
+- El inicio enlaza a cada prenda con un enlace de verdad, no con JavaScript, que es lo que siguen los buscadores.
+- `sitemap.xml` se rehace en cada sincronización y está declarado en `robots.txt`.
+- Los títulos de Vinted están en inglés; la página añade un nombre y un resumen en español ("Sudadera con capucha Puma vintage, talla M, en muy buen estado") para las búsquedas de aquí.
+
+Tras el primer despliegue hay que dar de alta el dominio en Google Search Console y enviar `https://justcreamvintage.es/sitemap.xml`.
 
 ## Dominio y publicación
 

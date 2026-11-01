@@ -1,2 +1,5 @@
 User-agent: *
+Allow: /
 Disallow: /sincronizar.html
+
+Sitemap: https://justcreamvintage.es/sitemap.xml
