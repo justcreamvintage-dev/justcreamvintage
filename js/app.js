@@ -145,17 +145,19 @@
   var ultimoVistazo = 0;
   function fotograma(ahora) {
     var px = suave.x, py = suave.y;
-    suave.x = lerp(suave.x, raton.x, 0.2);
-    suave.y = lerp(suave.y, raton.y, 0.2);
-    suave.vx = lerp(suave.vx, suave.x - px, 0.3);
-    suave.vy = lerp(suave.vy, suave.y - py, 0.3);
-    suave.nx = lerp(suave.nx, raton.nx, 0.07);
-    suave.ny = lerp(suave.ny, raton.ny, 0.07);
+    /* 0.45: el cursor va casi pegado al raton. Con valores bajos arrastra y marea, porque el
+       cursor del sistema esta oculto y la gota es la unica referencia que tiene la mano. */
+    suave.x = lerp(suave.x, raton.x, 0.45);
+    suave.y = lerp(suave.y, raton.y, 0.45);
+    suave.vx = lerp(suave.vx, suave.x - px, 0.25);
+    suave.vy = lerp(suave.vy, suave.y - py, 0.25);
+    suave.nx = lerp(suave.nx, raton.nx, 0.1);
+    suave.ny = lerp(suave.ny, raton.ny, 0.1);
 
     if (doc.classList.contains('con-cursor')) {
       if (ahora - ultimoVistazo > 80) { ultimoVistazo = ahora; mirarDebajo(); }
       /* la gota se estira en la direccion del movimiento */
-      var v = Math.min(Math.hypot(suave.vx, suave.vy) / 40, 0.6);
+      var v = Math.min(Math.hypot(suave.vx, suave.vy) / 75, 0.2);
       var ang = Math.atan2(suave.vy, suave.vx) * 180 / Math.PI;
       gota.style.transform = 'translate(' + suave.x.toFixed(1) + 'px,' + suave.y.toFixed(1) + 'px) rotate(' + ang.toFixed(1) + 'deg) scale(' + (1 + v).toFixed(3) + ',' + (1 - v * 0.5).toFixed(3) + ')';
       textoCursor.style.transform = 'translate(' + suave.x.toFixed(1) + 'px,' + suave.y.toFixed(1) + 'px)';
@@ -166,18 +168,18 @@
       if (!punteroFino) { var s = (ahora - tiempo0) / 1000; nx = Math.sin(s * 0.7) * 0.6; ny = Math.cos(s * 0.5) * 0.5; }
       lineas.forEach(function (l) {
         var p = +l.parentNode.getAttribute('data-prof');
-        l.style.translate = (nx * -p).toFixed(2) + 'px ' + (ny * -p * 0.5).toFixed(2) + 'px';
+        l.style.translate = (nx * -p * 0.5).toFixed(2) + 'px ' + (ny * -p * 0.25).toFixed(2) + 'px';
       });
       if (sello) {
-        sello.style.setProperty('--ry', (nx * 20).toFixed(2) + 'deg');
-        sello.style.setProperty('--rx', (ny * -20).toFixed(2) + 'deg');
-        sello.style.setProperty('--bx', (50 + nx * 40).toFixed(1) + '%');
-        sello.style.setProperty('--by', (50 + ny * 40).toFixed(1) + '%');
-        sello.style.setProperty('--ox', (nx * -14).toFixed(1) + 'px');
-        sello.style.setProperty('--oy', (ny * -10 + 4).toFixed(1) + 'px');
+        sello.style.setProperty('--ry', (nx * 10).toFixed(2) + 'deg');
+        sello.style.setProperty('--rx', (ny * -10).toFixed(2) + 'deg');
+        sello.style.setProperty('--bx', (50 + nx * 22).toFixed(1) + '%');
+        sello.style.setProperty('--by', (50 + ny * 22).toFixed(1) + '%');
+        sello.style.setProperty('--ox', (nx * -7).toFixed(1) + 'px');
+        sello.style.setProperty('--oy', (ny * -5 + 4).toFixed(1) + 'px');
       }
       chispas.forEach(function (c, i) {
-        var f = (i + 1) * 12;
+        var f = (i + 1) * 6;
         c.style.translate = (nx * f).toFixed(1) + 'px ' + (ny * f).toFixed(1) + 'px';
       });
     }
@@ -390,8 +392,8 @@
     var c = e.target.closest('.cromo'); if (!c) return;
     var r = c.getBoundingClientRect();
     var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
-    c.style.setProperty('--ry', ((px - 0.5) * 14).toFixed(2) + 'deg');
-    c.style.setProperty('--rx', ((0.5 - py) * 12).toFixed(2) + 'deg');
+    c.style.setProperty('--ry', ((px - 0.5) * 8).toFixed(2) + 'deg');
+    c.style.setProperty('--rx', ((0.5 - py) * 7).toFixed(2) + 'deg');
     c.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
     c.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
   });
