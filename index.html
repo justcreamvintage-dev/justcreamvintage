@@ -169,10 +169,24 @@
           <div class="matches" id="matches" hidden>
             <h3 class="matches__titulo">Tus matches</h3>
             <ul class="matches__lista" id="matches-lista"></ul>
+            <p class="matches__cuenta" id="matches-cuenta"></p>
+            <a class="boton boton--crema magnetico" id="matches-lote" href="https://www.vinted.es/member/3190974402" target="_blank" rel="noopener" data-cursor="Vinted"><span>Comprar el lote en Vinted</span></a>
+            <p class="matches__pista" id="matches-pista"></p>
           </div>
         </div>
         <div class="baraja-zona">
-          <div class="baraja" id="baraja" aria-live="polite"></div>
+          <div class="baraja-fila">
+            <div class="baraja" id="baraja" aria-live="polite"></div>
+            <div class="medidor" id="medidor" aria-hidden="true">
+              <div class="medidor__tubo">
+                <div class="medidor__relleno" id="medidor-relleno"></div>
+                <div class="medidor__marcas" id="medidor-marcas"></div>
+                <div class="medidor__fuego" id="medidor-fuego"><span></span><span></span><span></span></div>
+              </div>
+              <p class="medidor__cifra" id="medidor-cifra">0</p>
+              <p class="medidor__pie">matches</p>
+            </div>
+          </div>
           <div class="baraja__botones">
             <button type="button" class="redondo redondo--no" id="btn-no" aria-label="No me gusta, siguiente prenda" data-cursor="Paso">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6 L18 18 M18 6 L6 18"/></svg>
