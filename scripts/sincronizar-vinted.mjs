@@ -7,6 +7,7 @@ import { execFile } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 import { generar, slug } from './paginas.mjs';
 
 const ID = '3190974402';
@@ -22,17 +23,9 @@ const SECO = process.argv.includes('--dry-run');
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36';
 const dormir = (ms) => new Promise((r) => setTimeout(r, ms));
 
-/* ---------- Categorias (mismas reglas que js/categorias.js) ---------- */
-const REGLAS = [
-  ['Chaquetas y abrigos', /chaquet|cazador|abrigo|blazer|americana|chaleco|bomber|parka|gabardina|anorak|plum[ií]fero|trench|jacket|coat/i],
-  ['Jerséis y sudaderas', /jers[eé]|jersei|sudadera|c[aá]rdigan|rebeca|punto|hoodie|polar|sweat|knit/i],
-  ['Camisas y camisetas', /camis|blusa|\btop\b|polo|t-?shirt|body|shirt/i],
-  ['Pantalones', /pantal|vaquer|jeans?\b|chino|short|bermuda|legging|mallas|peto|cargo/i],
-  ['Vestidos y faldas', /vestido|falda|\bmono\b|dress|skirt/i],
-  ['Calzado', /zapat|bota|bot[ií]n|sandalia|deportiva|mocas[ií]n|sneaker|shoes?\b/i],
-  ['Accesorios', /bolso|gorr|bufanda|cintur[oó]n|gafas|cartera|mochila|pa[nñ]uelo|sombrero|bag\b|cap\b/i]
-];
-const categoria = (t) => (REGLAS.find((r) => r[1].test(t || '')) || ['Otras prendas'])[0];
+/* ---------- Categorias ---------- */
+/* Las reglas viven solo en js/categorias.js, que usa tambien la web: asi no pueden descuadrarse */
+const categoria = createRequire(import.meta.url)('../js/categorias.js').categoria;
 
 /* ---------- Peticiones con curl (fetch de Node lo bloquea Cloudflare) ---------- */
 const TARRO = join(tmpdir(), 'jcv-vinted-cookies.txt');
