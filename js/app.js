@@ -96,20 +96,35 @@
   }, { passive: true });
   document.addEventListener('pointerleave', function () { cursor.classList.add('fuera'); });
 
+  /* Que hay debajo del raton se mira sobre el sitio, no con pointerover/pointerout: asi el cursor
+     nunca se queda colgado cuando el elemento desaparece (cambio de prenda, cierre de la ficha,
+     recarga de la coleccion, carta deslizada) ni cuando la pagina se mueve bajo un raton quieto. */
   var SELECTOR_ACTIVO = '[data-cursor], a, button, select, label, .carta[data-pos="0"]';
-  document.addEventListener('pointerover', function (e) {
-    var el = e.target.closest(SELECTOR_ACTIVO);
-    if (!el) return;
-    var t = el.getAttribute('data-cursor') || (el.classList.contains('carta') ? 'Desliza' : '');
+  var activoAnterior = null;
+  function mirarDebajo() {
+    var bajo = document.elementFromPoint(raton.x, raton.y);
+    var el = bajo && bajo.closest ? bajo.closest(SELECTOR_ACTIVO) : null;
+    if (el === activoAnterior) return;
+    activoAnterior = el;
+    var t = el ? (el.getAttribute('data-cursor') || (el.classList.contains('carta') ? 'Desliza' : '')) : '';
     textoCursor.textContent = t;
     cursor.classList.toggle('con-texto', !!t);
-    cursor.classList.toggle('activo', !t);
-  });
-  document.addEventListener('pointerout', function (e) {
-    var el = e.target.closest(SELECTOR_ACTIVO);
-    if (!el || (e.relatedTarget && el.contains(e.relatedTarget))) return;
-    cursor.classList.remove('con-texto', 'activo');
-  });
+    cursor.classList.toggle('activo', !!el && !t);
+  }
+
+  /* Un dialogo modal se pinta en la capa superior del navegador, por encima de todo lo demas pase lo
+     que pase con el z-index. Si el cursor se queda en el body, dentro de la ficha no se ve nada: ni el
+     nuestro ni el del sistema, porque lo hemos ocultado. Asi que el cursor se muda al dialogo. */
+  function cursorDentroDe(destino) {
+    if (destino && cursor.parentNode !== destino) destino.appendChild(cursor);
+  }
+  window.JCV.cursorDentroDe = cursorDentroDe;
+
+  /* El cursor se esconde al salir de la ventana. Ojo: aqui no vale pointerout, porque el navegador
+     tambien lo dispara sin relatedTarget cuando desaparece el elemento que habia debajo. */
+  window.addEventListener('blur', function () { cursor.classList.add('fuera'); });
+  doc.addEventListener('mouseleave', function () { cursor.classList.add('fuera'); });
+  doc.addEventListener('mouseenter', function () { cursor.classList.remove('fuera'); });
 
   /* Botones magneticos */
   if (!reducido && punteroFino) {
@@ -127,6 +142,7 @@
   if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { heroVisible = en[0].isIntersecting; }).observe($('.hero'));
 
   var tiempo0 = performance.now();
+  var ultimoVistazo = 0;
   function fotograma(ahora) {
     var px = suave.x, py = suave.y;
     suave.x = lerp(suave.x, raton.x, 0.2);
@@ -137,6 +153,7 @@
     suave.ny = lerp(suave.ny, raton.ny, 0.07);
 
     if (doc.classList.contains('con-cursor')) {
+      if (ahora - ultimoVistazo > 80) { ultimoVistazo = ahora; mirarDebajo(); }
       /* la gota se estira en la direccion del movimiento */
       var v = Math.min(Math.hypot(suave.vx, suave.vy) / 40, 0.6);
       var ang = Math.atan2(suave.vy, suave.vx) * 180 / Math.PI;
@@ -334,17 +351,18 @@
     var precio = euros(p.precio, p.moneda);
     var tampon = vendida ? '<span class="tampon">Vendida</span>' : reservada ? '<span class="tampon tampon--reservada">Reservada</span>' : '';
     return '<li style="--i:' + Math.min(i, 12) + '">' +
-      '<button type="button" class="tarjeta' + (vendida ? ' tarjeta--vendida' : '') + '" data-id="' + esc(p.id) + '" data-cursor="' + (vendida ? 'Vendida' : 'Ver') + '" aria-label="' + esc(p.titulo + ', ' + precio + (vendida ? ', vendida' : reservada ? ', reservada' : '')) + '">' +
+      /* enlace de verdad a la pagina de la prenda: asi la encuentran los buscadores y se puede abrir aparte */
+      '<a class="tarjeta' + (vendida ? ' tarjeta--vendida' : '') + '" href="prenda/' + esc(p.slug || '') + '.html" data-id="' + esc(p.id) + '" data-cursor="' + (vendida ? 'Vendida' : 'Ver') + '" aria-label="' + esc(p.titulo + ', ' + precio + (vendida ? ', vendida' : reservada ? ', reservada' : '')) + '">' +
         '<span class="cromo">' +
           '<span class="cromo__foto">' +
-            (f[0] ? '<img src="' + esc(f[0]) + '" alt="" loading="lazy" decoding="async">' : '') +
+            (f[0] ? '<img src="' + esc(f[0]) + '" alt="' + esc(p.titulo) + '" loading="lazy" decoding="async">' : '') +
             (f[1] ? '<img class="foto-2" src="' + esc(f[1]) + '" alt="" loading="lazy" decoding="async">' : '') +
             tampon +
           '</span>' +
           '<span class="cromo__precio"' + (precio.length > 6 ? ' style="font-size:.9rem"' : '') + '>' + esc(precio) + '</span>' +
           '<span class="cromo__banda"><span class="cromo__titulo">' + esc(p.titulo) + '</span><span class="cromo__meta">' + esc((p.marca || 'Sin marca') + ', talla ' + (p.talla || 'única')) + '</span></span>' +
         '</span>' +
-      '</button></li>';
+      '</a></li>';
   }
 
   function pintar(animar) {
@@ -433,7 +451,20 @@
         : 'El pago y el envío se hacen en Vinted, con su protección al comprador.';
     }
     if (lenis) lenis.stop();
-    if (!ficha.open) ficha.showModal();
+    if (!ficha.open) {
+      ficha.showModal();
+      /* mientras dura la animacion de apertura el dialogo lleva un transform, y eso mueve el
+         marco de referencia del cursor. Se tapa esos milisegundos y se muda al terminar. */
+      cursor.classList.add('mudando');
+      var mudar = function () {
+        ficha.removeEventListener('animationend', mudar);
+        clearTimeout(reloj);
+        if (ficha.open) cursorDentroDe(ficha);
+        cursor.classList.remove('mudando');
+      };
+      var reloj = setTimeout(mudar, 700);
+      ficha.addEventListener('animationend', mudar);
+    }
   }
   function pintarGuardar() {
     if (!fichaActual) return;
@@ -442,7 +473,12 @@
     g.textContent = si ? 'Guardada en tus matches. Quitar' : 'Guardar como match';
   }
   $('#ficha-guardar').addEventListener('click', function () { if (fichaActual) { matches.poner(fichaActual.id, !matches.tiene(fichaActual.id)); pintarGuardar(); } });
-  ficha.addEventListener('close', function () { if (lenis) lenis.start(); fichaActual = null; });
+  ficha.addEventListener('close', function () {
+    if (lenis) lenis.start();
+    fichaActual = null;
+    cursor.classList.remove('mudando');
+    cursorDentroDe(document.body);
+  });
   $('#ficha-cerrar').addEventListener('click', function () { ficha.close(); });
   ficha.addEventListener('click', function (e) {
     if (e.target === ficha) { ficha.close(); return; }
@@ -452,8 +488,12 @@
   });
   rejilla.addEventListener('click', function (e) {
     var t = e.target.closest('.tarjeta'); if (!t) return;
+    /* con ctrl, cmd, shift o el boton central se abre la pagina de la prenda como un enlace normal */
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     var p = window.JCV.productos.find(function (x) { return x.id === t.getAttribute('data-id'); });
-    if (p) abrirFicha(p);
+    if (!p) return;
+    e.preventDefault();
+    abrirFicha(p);
   });
 
   cargar(true);
