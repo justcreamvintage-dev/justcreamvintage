@@ -1,7 +1,7 @@
 {
  "version": 1,
  "fuente": "vinted",
- "actualizado": "2026-11-02T21:34:01.217Z",
+ "actualizado": "2026-11-03T00:59:18.856Z",
  "perfil": "https://www.vinted.es/member/3190974402",
  "productos": [
   {
@@ -655,7 +655,7 @@
    "vendido_en": null
   },
   {
-   "id": "10619508558",
+   "id": "10643966170",
    "titulo": "Under Armour Black Hooded Jacket Size S Full Zip Athletic Training Running Sportswea",
    "marca": "Under Armour",
    "talla": "S",
@@ -673,11 +673,11 @@
     "https://images1.vinted.net/tc/03_01093_7A3bx1x9syBunNTu8P3VFBBU/275fb4e9.jpeg?s=6d0bbe99a4f387cb179a00a1e22bf758b87e5702",
     "https://images1.vinted.net/tc/01_0019a_GeRoksE45HDigWvLuVz2CMRQ/278c912c.jpeg?s=3e4006b77139df0d8685e39ca2ffe5e1d29b62a5"
    ],
-   "url": "https://www.vinted.es/items/10619508558-under-armour-black-hooded-jacket-size-s-full-zip-athletic-training-running-sportswea",
+   "url": "https://www.vinted.es/items/10643966170-under-armour-black-hooded-jacket-size-s-full-zip-athletic-training-running-sportswea",
    "estado_venta": "disponible",
    "categoria": "Chaquetas y abrigos",
-   "slug": "under-armour-black-hooded-jacket-size-s-full-zip-athletic-training-run-10619508558",
-   "publicado": "2026-11-01T15:18:12.850Z",
+   "slug": "under-armour-black-hooded-jacket-size-s-full-zip-athletic-training-run-10643966170",
+   "publicado": "2026-11-03T00:59:18.856Z",
    "vendido_en": null
   },
   {
@@ -1792,6 +1792,32 @@
    "slug": "vintage-adidas-bench-coat-jacket-90s-blokecore-terrace-casual-navy-gre-10386325577",
    "publicado": "2026-10-31T19:34:42.428Z",
    "vendido_en": null
+  },
+  {
+   "id": "10619508558",
+   "titulo": "Under Armour Black Hooded Jacket Size S Full Zip Athletic Training Running Sportswea",
+   "marca": "Under Armour",
+   "talla": "S",
+   "estado": "Bueno",
+   "precio": 22.95,
+   "moneda": "EUR",
+   "descripcion": "🖤 Under Armour black hooded sports jacket with grey UA logo on the chest and UNDER ARMOUR branding across the back. Athletic design with contrasting piping on the sleeves, adjustable hood and two zipped side pockets.\n\n📏 Size: S (Small) – Confirmed on the original label. Regular to slim fit.\n\n📐 Measurements (approx.):\n\nLength: 68 cm\n\nChest (pit to pit): 48 cm\n\nSleeve: 61 cm\n\n⚠️ Condition: Good pre-owned condition with signs of use. The main central zipper does not work, so the jacket cannot be fastened normally. The jacket is being sold with this defect, reflected in the price. Please check all photos carefully.\n\n📦 Fast shipping, usually within 24 hours.\n\n💬 Reasonable offers welcome. Feel free to message me with any questions!\n\nKeywords: Under Armour, Black Jacket, Hooded Jacket, Sportswear, Size S, Running Jacket, Training Jacket, Gym Wear, Athletic Jacket, Streetwear, Full Zip Hoodie, Activewear, Sports Jacket, UA Hoodie, Outdoor Jacket, Fitness, Casual Wear, Under Armour Men, Second Hand, Pre-owned, Zip Repair, Jacket with Defect, Sportswear Fashion.",
+   "fotos": [
+    "https://images1.vinted.net/tc/02_00f23_bFYbGrMBh3hSi1bd7MUzN5oD/5205e3df.jpeg?s=b87a3bd29fb3286d65a048e1bdd06262687fe808",
+    "https://images1.vinted.net/tc/06_01688_6mQpwPjdDhWsFTWUfHv7vh9t/aa5d4812.jpeg?s=ec6a530414290a091b4bb90161ba040c3cebd357",
+    "https://images1.vinted.net/tc/01_00348_py7MZGhKpnigSeVXtY3sdNxz/406a4d7c.jpeg?s=fb3436dfc17b8c43eb33241b8faeeca5a82ca544",
+    "https://images1.vinted.net/tc/06_01174_3RK7Rat3ZfaFjkttuzqXmhAJ/15f9d624.jpeg?s=d1e568cf35f2556f8ea6162eb17792694eaed061",
+    "https://images1.vinted.net/tc/02_00a04_AZJuxtRGAZzwrk3EYbeXWd4N/15989acc.jpeg?s=7567673454f692c7fa779e6dfaba9d3d0b406d21",
+    "https://images1.vinted.net/tc/05_01acd_nwEMvGPFEjBbvEHJzwxy9nc5/86e11b73.jpeg?s=b2cfb679f5dc307c2979ee805c4194eda3738163",
+    "https://images1.vinted.net/tc/03_01093_7A3bx1x9syBunNTu8P3VFBBU/275fb4e9.jpeg?s=6d0bbe99a4f387cb179a00a1e22bf758b87e5702",
+    "https://images1.vinted.net/tc/01_0019a_GeRoksE45HDigWvLuVz2CMRQ/278c912c.jpeg?s=3e4006b77139df0d8685e39ca2ffe5e1d29b62a5"
+   ],
+   "url": "https://www.vinted.es/items/10619508558-under-armour-black-hooded-jacket-size-s-full-zip-athletic-training-running-sportswea",
+   "estado_venta": "vendida",
+   "categoria": "Chaquetas y abrigos",
+   "slug": "under-armour-black-hooded-jacket-size-s-full-zip-athletic-training-run-10619508558",
+   "publicado": "2026-11-01T15:18:12.850Z",
+   "vendido_en": "2026-11-03T00:59:18.856Z"
   },
   {
    "id": "10635422307",
