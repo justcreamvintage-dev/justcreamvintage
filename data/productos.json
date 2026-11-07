@@ -1,9 +1,35 @@
 {
  "version": 1,
  "fuente": "vinted",
- "actualizado": "2026-11-07T17:18:54.283Z",
+ "actualizado": "2026-11-07T17:52:16.959Z",
  "perfil": "https://www.vinted.es/member/3190974402",
  "productos": [
+  {
+   "id": "10706154328",
+   "titulo": "Adidas Climalite Navy Track Pants UK 16 EU 42 Grey Side Stripes Sportswear",
+   "marca": "adidas",
+   "talla": "L",
+   "estado": "Muy bueno",
+   "precio": 24.95,
+   "moneda": "EUR",
+   "descripcion": "Adidas Climalite track pants in dark navy with contrasting grey side stripes and a small Adidas logo. Finished with an adjustable elasticated waist and straight open hems.\n\n📏 Size: UK 16 / D 42 / F 44 (original label)\n\nApproximate measurements (laid flat):\nLength: 105 cm (approx.)\nWaist width, relaxed: 42 cm (approx.)\n\n✨ Details:\nClimalite label\nContrasting side stripes\nAdidas performance logo\nDrawstring waistband\nPockets with press-stud fastening\nStraight open hems\n100% polyester (label)\nMade in Vietnam (label)\n\n✅ Condition: Pre-owned with normal fabric and trim wear. Please examine all photographs carefully for the exact condition.\n\n📸 Detailed photographs, label and measurements are included to help you check the fit and condition before purchasing.\n\n📦 Carefully packaged for shipping.\n\n💬 Reasonable offers welcome! Feel free to message me with any questions.",
+   "fotos": [
+    "https://images1.vinted.net/tc/02_00d39_S4YDj8DDNt84tqSZVTMyHPUD/2d0cab65.jpeg?s=bd41eb56a7ebe6241b84825cd7a09867ce335010",
+    "https://images1.vinted.net/tc/02_01b7a_RUC3pyTNB9co1trXfkrasb8u/44694b93.jpeg?s=76c401aaf1750fd8e8fced9fdc70449b9869afdf",
+    "https://images1.vinted.net/tc/01_019d9_GnuCoxDmTfHgem7oKt9MCXAw/29e4f540.jpeg?s=d475966a397dd718957f37f2ccf86921bb58289c",
+    "https://images1.vinted.net/tc/02_019de_t9SKDqxg3JbF1w9X9forNnq1/835c1470.jpeg?s=e13c9e3621ff2d6a1bfdaa3ea127a5cb0fb1eb26",
+    "https://images1.vinted.net/tc/01_001ac_GjmgXNZ2dixk312abnu5uv3Q/a9948823.jpeg?s=64160bcb05048689fcf90122d9f548ef9ce433ee",
+    "https://images1.vinted.net/tc/02_005fe_SUgghneXQ3eubd5fst2AJj5y/4be63c18.jpeg?s=1764b0402be3764ec6e24dfd41ba223b6e402b05",
+    "https://images1.vinted.net/tc/02_023fc_VmpgX3rzJwKhrfchBVscQu4m/37d85281.jpeg?s=f0d66a048fe0436856264088ea3c26dc66a7195e",
+    "https://images1.vinted.net/tc/05_00ae1_7UtJgWGCWBCcmmKV5UF68mMY/611be8c9.jpeg?s=1d7e5eb9dd0c6100583158796231b51a39bbf692"
+   ],
+   "url": "https://www.vinted.es/items/10706154328-adidas-climalite-navy-track-pants-uk-16-eu-42-grey-side-stripes-sportswear",
+   "estado_venta": "disponible",
+   "categoria": "Pantalones",
+   "slug": "adidas-climalite-navy-track-pants-uk-16-eu-42-grey-side-stripes-sports-10706154328",
+   "publicado": "2026-11-07T17:52:16.959Z",
+   "vendido_en": null
+  },
   {
    "id": "10704933272",
    "titulo": "Burberrys Navy V Neck Jumper Size 6 Merino Wool Blend Embroidered Logo Classic Knitwear",
