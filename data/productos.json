@@ -1,7 +1,7 @@
 {
  "version": 1,
  "fuente": "vinted",
- "actualizado": "2026-11-10T12:13:23.568Z",
+ "actualizado": "2026-11-10T16:54:23.319Z",
  "perfil": "https://www.vinted.es/member/3190974402",
  "productos": [
   {
@@ -2385,11 +2385,11 @@
     "https://images1.vinted.net/tc/02_00004_6awiK2CMM63AuxETo2LYDyYo/d5d56ace.jpeg?s=ae38d7cc7891d7c7cee11f0d8fbee6da326ef5dd"
    ],
    "url": "https://www.vinted.es/items/10390484355-levis-510-skinny-jeans-dark-blue-denim-y2k-vintage-00s-streetwear",
-   "estado_venta": "disponible",
+   "estado_venta": "vendida",
    "categoria": "Pantalones",
    "slug": "levi-s-510-skinny-jeans-dark-blue-denim-y2k-vintage-00s-streetwear-10390484355",
    "publicado": "2026-10-31T19:34:42.428Z",
-   "vendido_en": null
+   "vendido_en": "2026-11-10T16:54:23.319Z"
   },
   {
    "id": "10399186357",
