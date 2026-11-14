@@ -1,9 +1,35 @@
 {
  "version": 1,
  "fuente": "vinted",
- "actualizado": "2026-11-14T12:30:34.136Z",
+ "actualizado": "2026-11-14T13:30:19.405Z",
  "perfil": "https://www.vinted.es/member/3190974402",
  "productos": [
+  {
+   "id": "10803946621",
+   "titulo": "Champion St John Fisher College Sweatshirt 2XL Grey Burgundy Gold Crewneck",
+   "marca": "Champion",
+   "talla": "XXL",
+   "estado": "Muy bueno",
+   "precio": 19.95,
+   "moneda": "EUR",
+   "descripcion": "✨ Charcoal grey Champion crewneck sweatshirt with large burgundy and gold St. John Fisher College lettering across the chest.\n\n📏 Size: 2XL (original Champion label).\n\nMeasurement photographs are included. Please compare them with a garment that fits you well.\n\n✨ Details:\nST. JOHN FISHER COLLEGE front lettering\nBurgundy applique with gold outlines\nEmbroidered C sleeve patch\nRound ribbed neckline\nLong sleeves with ribbed cuffs\nRibbed hem\nMade in El Salvador\n\n✅ Condition: Pre-owned with visible fraying and loose threads on the front applique, especially around the F. Please check the close-up photographs carefully.\n\n📸 Label, logos, details and measurement photographs are included to help you check the fit and condition.\n\n📦 Carefully packaged for shipping.\n\n💬 Reasonable offers welcome! Feel free to message me with any questions.",
+   "fotos": [
+    "https://images1.vinted.net/tc/02_01fa0_BtWRE5PnmqhxJK1N4TwZ4Zgr/9a6eab1d.jpeg?s=d46ad20f5d753e1b58f38f426d3d2a43221e29eb",
+    "https://images1.vinted.net/tc/06_00ff2_uwyRZiyq4Xmwaw8Q7Z87G8kd/898770b9.jpeg?s=b9de53016ec52d581a5c5ef5098242b4db7340b6",
+    "https://images1.vinted.net/tc/02_022ad_RSVGSv8nFSMFoDX9Mkg3zKfE/982a355c.jpeg?s=55cb8845203293686c39ebcd2cca6574230f959a",
+    "https://images1.vinted.net/tc/04_02425_oQTG9G3QupVp7dFaoiyorNR8/bb41e131.jpeg?s=808f6a2de620e3421f26f266ffcd76c4605c2d7b",
+    "https://images1.vinted.net/tc/05_0059f_SsJXM92edXiUctgxXkqJXF2W/d6ee9831.jpeg?s=baa0ac9856db398fac8e1861490af5beec0ffc07",
+    "https://images1.vinted.net/tc/02_008a8_oMRUye7NPjVZAe855MFPej1m/0fd7356f.jpeg?s=9e9ece36b854e12749a3d22a5a89811d2b286e8f",
+    "https://images1.vinted.net/tc/02_0056c_xo6YnJBdPocgmohMtZNSmAs3/49fb4a5b.jpeg?s=64de006ac92ed8467d2faa94f4b52ff80d347709",
+    "https://images1.vinted.net/tc/02_00b1b_66KCQrTHhobxBsAHTH49mJ2T/891b1745.jpeg?s=eb7f8c0df08829073eb6ea9317a76ccd22b97fd9"
+   ],
+   "url": "https://www.vinted.es/items/10803946621-champion-st-john-fisher-college-sweatshirt-2xl-grey-burgundy-gold-crewneck",
+   "estado_venta": "disponible",
+   "categoria": "Jerséis y sudaderas",
+   "slug": "champion-st-john-fisher-college-sweatshirt-2xl-grey-burgundy-gold-crew-10803946621",
+   "publicado": "2026-11-14T13:30:19.405Z",
+   "vendido_en": null
+  },
   {
    "id": "10803882870",
    "titulo": "Champion Big Sky Montana Black Hoodie L Approx Mountain Graphic Pullover Sweatshirt",
@@ -86,7 +112,7 @@
    "id": "10803700922",
    "titulo": "Champion University of Okoboji Peach Sweatshirt S Embroidered Crewneck College Sportswear",
    "marca": "Champion",
-   "talla": "M",
+   "talla": "S",
    "estado": "Muy bueno",
    "precio": 20.95,
    "moneda": "EUR",
@@ -142,7 +168,7 @@
    "estado": "Muy bueno",
    "precio": 20.95,
    "moneda": "EUR",
-   "descripcion": "",
+   "descripcion": "✨ Dusty rose pink Champion crewneck sweatshirt with cream script branding outlined in navy and an embroidered C sleeve patch.\n\n📏 Size: S (original Champion label).\n\nMeasurement photographs are included. Please compare them with a garment that fits you well.\n\n✨ Details:\nDusty pink colour\nLarge cream and navy Champion script\nEmbroidered C sleeve patch\nRaglan sleeves\nRound neckline with V stitching\nRibbed collar, cuffs and hem\nMade in Honduras\n\n✅ Condition: Pre-owned with normal signs of use. Please examine the detailed photographs for the exact condition.\n\n📸 Label, logos, details and measurement photographs are included to help you check the fit and condition.\n\n📦 Carefully packaged for shipping.\n\n💬 Reasonable offers welcome! Feel free to message me with any questions.",
    "fotos": [
     "https://images1.vinted.net/tc/01_00637_1mqPVgeK4LN6689QQ7Gz7Adm/74b4e98d.jpeg?s=1264df5ee90b9638d9a23a7e32c75d42df0789c9",
     "https://images1.vinted.net/tc/05_00454_Pd7K5mDShu6eyQUD1tjESzMH/91963954.jpeg?s=5c529805edb0882b6e26ea9f9db5acd56c3bc2b9",
@@ -444,32 +470,6 @@
    "categoria": "Jerséis y sudaderas",
    "slug": "champion-gus-macker-basketball-pink-hoodie-s-embroidered-sweatshirt-vi-10765323395",
    "publicado": "2026-11-11T16:20:33.050Z",
-   "vendido_en": null
-  },
-  {
-   "id": "10764346851",
-   "titulo": "Levi's 511 Slim Fit Light Blue Jeans W30 L30 Faded Denim Vintage Streetwear",
-   "marca": "Levi's",
-   "talla": "W30 | ES 40",
-   "estado": "Muy bueno",
-   "precio": 25.95,
-   "moneda": "EUR",
-   "descripcion": "💙 Levi's 511 Slim Fit jeans featuring a classic light blue faded denim wash with subtle distressed-style fading and contrasting darker blue stitching details. Timeless slim-fit silhouette with a tapered leg, traditional zip fly and iconic Levi's red tab on the back pocket. Perfect for everyday wear, casual outfits, streetwear and vintage-inspired looks.\n\n📏 Size: W30 L30 (original Levi's label)\n\nApproximate measurements (laid flat):\n\nLength: 98 cm\n\nWaist width: 38 cm\n\nLeg opening: 19 cm\n\n✨ Details:\n\nLevi's 511 Slim Fit denim jeans\n\nClassic light blue faded denim wash\n\nIconic Levi's slim-fit silhouette\n\nSlim straight-to-tapered leg design\n\nTraditional zip fly with button fastening\n\nClassic five-pocket design\n\nSignature Levi's red tab on back pocket\n\nOriginal Levi Strauss & Co. waistband patch\n\nWaterless collection label\n\nSubtle faded whiskering across upper legs\n\nContrasting darker blue seams and stitching\n\nClassic mid-rise waist design\n\nDurable and comfortable denim fabric\n\nTimeless American denim aesthetic\n\nMinimalist and versatile casual design\n\nPerfect for everyday wear and relaxed outfits\n\nIdeal for streetwear, Y2K and retro-inspired fashion\n\n✅ Condition: Good pre-owned condition with normal signs of previous use, including natural denim fading and light fabric wear. Please examine all photographs carefully for the exact condition and details.\n\n📸 Detailed photographs, original Levi's size label and measurements are included to help you check the fit and condition before purchasing.\n\n📦 Carefully packaged for shipping.\n\n💬 Reasonable offers welcome! Feel free to message me with any questions.\n\nKeywords: Levi's, Levis 511, Levi Strauss, Levi's Jeans, 511 Slim Fit, W30 L30, Light Blue Jeans, Light Wash Denim, Faded Jeans, Slim Fit Jeans, Tapered Jeans, Blue Denim, Vintage Style",
-   "fotos": [
-    "https://images1.vinted.net/tc/06_0264f_v5uY8jACHvyFLHLNe1XUVtP4/e1175d27.jpeg?s=c27c0f17d243cbdf1bcf8905ed4803fe8190bac9",
-    "https://images1.vinted.net/tc/06_0193c_KopSXdhS4qRqmXrkHyr8Qtfo/234ac739.jpeg?s=2f0c45492f0afdde607737bdfdffee1f3e6a005f",
-    "https://images1.vinted.net/tc/05_00fd8_EgaZ9z1KCpb8MwWfnsscUyox/f4f1ea61.jpeg?s=57e561cfdc3cf0f307cb65325c4c823a1d239fdb",
-    "https://images1.vinted.net/tc/05_025c7_25oQrdffRGgDfSwVLNzw9gD6/ffe13eac.jpeg?s=8ca858c98989d20c6533da8e4e63cba8d320fe48",
-    "https://images1.vinted.net/tc/02_01f24_nJqfAs5mYXQ44hzfjzaqLmc8/e6c30bcc.jpeg?s=b86ead7385ba6f953b7485930d17e8e43a87dcdd",
-    "https://images1.vinted.net/tc/02_00bbc_7FwYkeG4mxN7PpsRrE9Quoht/b1f33abd.jpeg?s=84635448cae9f1c12c2144c12e5598e16d96c6f9",
-    "https://images1.vinted.net/tc/05_00aa5_Ua5DLs871VYzrFBFPdFY1GSR/daa3c123.jpeg?s=26d59003f9b533019a463352b363bf679dcb03fc",
-    "https://images1.vinted.net/tc/01_01247_jWjy8DDUYHCQ839oDAsXXJey/f9780b6c.jpeg?s=87c3ddfbb6959e31d0646b765976284d0d1f1e4e"
-   ],
-   "url": "https://www.vinted.es/items/10764346851-levis-511-slim-fit-light-blue-jeans-w30-l30-faded-denim-vintage-streetwear",
-   "estado_venta": "disponible",
-   "categoria": "Pantalones",
-   "slug": "levi-s-511-slim-fit-light-blue-jeans-w30-l30-faded-denim-vintage-stree-10764346851",
-   "publicado": "2026-11-11T15:27:17.150Z",
    "vendido_en": null
   },
   {
@@ -2703,6 +2703,32 @@
    "slug": "adidas-joggers-grey-gold-logo-sweatpants-retro-streetwear-s-10400639963",
    "publicado": "2026-10-31T19:34:42.428Z",
    "vendido_en": null
+  },
+  {
+   "id": "10764346851",
+   "titulo": "Levi's 511 Slim Fit Light Blue Jeans W30 L30 Faded Denim Vintage Streetwear",
+   "marca": "Levi's",
+   "talla": "W30 | ES 40",
+   "estado": "Muy bueno",
+   "precio": 25.95,
+   "moneda": "EUR",
+   "descripcion": "💙 Levi's 511 Slim Fit jeans featuring a classic light blue faded denim wash with subtle distressed-style fading and contrasting darker blue stitching details. Timeless slim-fit silhouette with a tapered leg, traditional zip fly and iconic Levi's red tab on the back pocket. Perfect for everyday wear, casual outfits, streetwear and vintage-inspired looks.\n\n📏 Size: W30 L30 (original Levi's label)\n\nApproximate measurements (laid flat):\n\nLength: 98 cm\n\nWaist width: 38 cm\n\nLeg opening: 19 cm\n\n✨ Details:\n\nLevi's 511 Slim Fit denim jeans\n\nClassic light blue faded denim wash\n\nIconic Levi's slim-fit silhouette\n\nSlim straight-to-tapered leg design\n\nTraditional zip fly with button fastening\n\nClassic five-pocket design\n\nSignature Levi's red tab on back pocket\n\nOriginal Levi Strauss & Co. waistband patch\n\nWaterless collection label\n\nSubtle faded whiskering across upper legs\n\nContrasting darker blue seams and stitching\n\nClassic mid-rise waist design\n\nDurable and comfortable denim fabric\n\nTimeless American denim aesthetic\n\nMinimalist and versatile casual design\n\nPerfect for everyday wear and relaxed outfits\n\nIdeal for streetwear, Y2K and retro-inspired fashion\n\n✅ Condition: Good pre-owned condition with normal signs of previous use, including natural denim fading and light fabric wear. Please examine all photographs carefully for the exact condition and details.\n\n📸 Detailed photographs, original Levi's size label and measurements are included to help you check the fit and condition before purchasing.\n\n📦 Carefully packaged for shipping.\n\n💬 Reasonable offers welcome! Feel free to message me with any questions.\n\nKeywords: Levi's, Levis 511, Levi Strauss, Levi's Jeans, 511 Slim Fit, W30 L30, Light Blue Jeans, Light Wash Denim, Faded Jeans, Slim Fit Jeans, Tapered Jeans, Blue Denim, Vintage Style",
+   "fotos": [
+    "https://images1.vinted.net/tc/06_0264f_v5uY8jACHvyFLHLNe1XUVtP4/e1175d27.jpeg?s=c27c0f17d243cbdf1bcf8905ed4803fe8190bac9",
+    "https://images1.vinted.net/tc/06_0193c_KopSXdhS4qRqmXrkHyr8Qtfo/234ac739.jpeg?s=2f0c45492f0afdde607737bdfdffee1f3e6a005f",
+    "https://images1.vinted.net/tc/05_00fd8_EgaZ9z1KCpb8MwWfnsscUyox/f4f1ea61.jpeg?s=57e561cfdc3cf0f307cb65325c4c823a1d239fdb",
+    "https://images1.vinted.net/tc/05_025c7_25oQrdffRGgDfSwVLNzw9gD6/ffe13eac.jpeg?s=8ca858c98989d20c6533da8e4e63cba8d320fe48",
+    "https://images1.vinted.net/tc/02_01f24_nJqfAs5mYXQ44hzfjzaqLmc8/e6c30bcc.jpeg?s=b86ead7385ba6f953b7485930d17e8e43a87dcdd",
+    "https://images1.vinted.net/tc/02_00bbc_7FwYkeG4mxN7PpsRrE9Quoht/b1f33abd.jpeg?s=84635448cae9f1c12c2144c12e5598e16d96c6f9",
+    "https://images1.vinted.net/tc/05_00aa5_Ua5DLs871VYzrFBFPdFY1GSR/daa3c123.jpeg?s=26d59003f9b533019a463352b363bf679dcb03fc",
+    "https://images1.vinted.net/tc/01_01247_jWjy8DDUYHCQ839oDAsXXJey/f9780b6c.jpeg?s=87c3ddfbb6959e31d0646b765976284d0d1f1e4e"
+   ],
+   "url": "https://www.vinted.es/items/10764346851-levis-511-slim-fit-light-blue-jeans-w30-l30-faded-denim-vintage-streetwear",
+   "estado_venta": "vendida",
+   "categoria": "Pantalones",
+   "slug": "levi-s-511-slim-fit-light-blue-jeans-w30-l30-faded-denim-vintage-stree-10764346851",
+   "publicado": "2026-11-11T15:27:17.150Z",
+   "vendido_en": "2026-11-14T13:30:19.405Z"
   },
   {
    "id": "10747414961",
